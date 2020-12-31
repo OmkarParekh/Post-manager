@@ -36,3 +36,58 @@
     transform: rotate(360deg);
   }
 }
+#login{
+  margin-top: 11%;
+  align-items: center;
+  width: 70%;
+  
+}
+#login2{
+ 
+  align-items: center;
+  width: 70%;
+  
+}
+#loginbtn{
+  width: 100%;
+}
+#loginspace{
+ margin-top: 5%;
+ margin-bottom: 5%;
+ width: 50%;
+ 
+}
+#signin{
+  margin-top: 1%;
+  
+
+}
+#addimg{
+  margin-top: 2%;
+ align-self: center;
+ border: 1px solid rgba(0, 0, 0, 0.164);
+  width: 500px;
+  height: 350px;
+  
+}
+
+.card{
+margin-left: 15%;
+margin-bottom: 2%;
+margin-top: 1%;
+width: 50rem;
+ 
+}
+.btn{
+  border: 1px solid white;
+}
+.btn-group{
+  width: 100%;
+  margin-bottom: 2%;
+  border: 1px solid white;
+}
+#lheader{
+margin-bottom: 10%;
+}
+
+

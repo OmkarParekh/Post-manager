@@ -1,0 +1,28 @@
+.post{
+     width: 60%;
+     margin-right: auto;
+     margin-left: auto;
+     margin-top: 78px;
+}
+.btn-group{
+     width: 100%;
+     margin-bottom: 2%;
+     border: 1px solid white;
+}
+.post-btn{
+     border: 1px solid white;
+     width: 100%;
+}
+.comment-form {
+     width: 500px;
+}
+.comment-form .input-group {
+     margin: 10px 0; 
+}
+.icon-custom{
+     margin-left: 100%;
+}
+.postcard{
+     width: 70%;
+     margin: auto;
+}

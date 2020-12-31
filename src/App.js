@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { BrowserRouter as Router ,Route, Redirect } from 'react-router-dom';
+import Home from './Pages/HomePage/Home'
+import Signin from "./Pages/LoginSignup/Signup";
+import Addpost from "./Pages/Post/Createpost";
+import Login from "./Pages/LoginSignup/Login";
+import Nav from './Components/Navbars/Navbar'
+import Auth from './Pages/oauth'
+export default class App extends Component {
+     render() {
+          return (
+               <div>
+<Router>
+<Nav/>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+<Route path='/' exact component={Login}/>
+<Route path='/home'  exact component={Home} />
+<Route path='/signup' exact component={Signin}/>
+<Route path='/Createpost' exact component={Addpost}/>
+<Route path='/auth' exact component={Auth}/>
+</Router>
+               </div>
+          )
+     }
 }
-
-export default App;
