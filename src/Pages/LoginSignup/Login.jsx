@@ -105,7 +105,7 @@ export default class Login extends Component {
                     <div class="card text-white bg-primary mb-2  login" >
                     
                     <div class="card-body" id='loginspace'>
-                    <h2 class="card-title text-center" id='lheader'>Post Manager</h2>
+                    <h2 class="card-title text-center" id='lheader'>Login</h2>
                     {/* <div class="form-group">
                     
                     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Username" onChange={this.us}/>
@@ -117,15 +117,31 @@ export default class Login extends Component {
                     <button type="button" class="btn btn-primary login-btn "  onClick={this.login}>Login</button> */}
                     </div>
                     </div>
-                    <div class="card text-white bg-primary mb-3 login-2card "  >
+                    {/* <div class="card text-white bg-primary mb-3 login-2card "  >
                     <div class="card-body">
                     <h5 class="card-title text-center">Dont Have Account <a href='/signup' class='text-warning'>Sign up</a></h5>
                     
                     </div>
-                    </div>
-                    <div class="card btn text-white bg-primary mb-3 login-2card " onClick={this.oauth} >
+                    </div> */}
+                    <div class="card btn text-white bg-primary mb-3 login-2card  " onClick={this.oauth} >
                     <div class="card-body">
                     <h5 class="card-title text-center">Sign-in with Google </h5>
+                    
+                    </div>
+                    </div>
+                    <div class="card btn text-white bg-primary mb-3 login-2card " onClick={()=>{
+                         alert('facebook')
+                    }} >
+                    <div class="card-body">
+                    <h5 class="card-title text-center">Sign-in with Facebook </h5>
+                    
+                    </div>
+                    </div>
+                    <div class="card btn text-white bg-primary mb-3 login-2card " onClick={()=>{
+                         alert('Github')
+                    }} >
+                    <div class="card-body">
+                    <h5 class="card-title text-center">Sign-in with Github</h5>
                     
                     </div>
                     </div>

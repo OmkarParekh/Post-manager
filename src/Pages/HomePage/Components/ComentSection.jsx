@@ -67,11 +67,12 @@ export default class ComentSection extends Component {
                     <ul class="list-group">
                          {/* {
                               this.state.data.map((item)=>( */}
-                                   <li class="list-group-item">{item.Name}:{item.Comment}
+                                   <li class="list-group-item">Username:Message
                                    {/* {
                                         item.Name===localStorage.getItem('Username')? */}
                                         <i class="fas fa-times icon-custom" onClick={()=>{
-                                             this.delete(item._id)
+                                             // this.delete(item._id)
+                                             this.delete()
                                         }}></i>
                                         {/* :
                                         <></>

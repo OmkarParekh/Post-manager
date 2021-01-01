@@ -26,13 +26,17 @@ export default class Home extends Component {
           return (
                <div>
                <div class='post'>
-             
-                         <Post/> 
-                
+                   {/* {     data.length===0?<>No Post Available</>:
+                        data.reverse().map(data=>(
+                         <Post data={data} /> 
+                        ))
+                   } */}
+                   <Post/>
                </div>
                </div>
           )
      }
 }
+
 
 
