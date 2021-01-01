@@ -17,7 +17,7 @@ export default class Addpost extends Component {
           }
          
           this.imageupload = this.imageupload.bind(this);
-          this.dataupload = this.dataupload.bind(this);
+          // this.dataupload = this.dataupload.bind(this);
           this.pt = this.pt.bind(this);
           this.pd = this.pd.bind(this);
         }
@@ -30,74 +30,74 @@ export default class Addpost extends Component {
             })  
             
         }
-     async dataupload(e){
-          console.log(this.state.image)
-          let file=this.state.image
-          if(file===null){
-               const data=
-               {
-                    Postname:this.state.pt,
-                    Description:this.state.pd,
-                    Username:localStorage.getItem('Username'),
-                    Date:Date.now(),
-                    Likes:0,
+     // async dataupload(e){
+     //      console.log(this.state.image)
+     //      let file=this.state.image
+     //      if(file===null){
+     //           const data=
+     //           {
+     //                Postname:this.state.pt,
+     //                Description:this.state.pd,
+     //                Username:localStorage.getItem('Username'),
+     //                Date:Date.now(),
+     //                Likes:0,
                   
-               }
-               Axios.post(`http://post-manage.herokuapp.com/Create`,data)
-               .then(res=>{
-                    if(res.data.errors)
-                    {
-                         const path=Object.keys(res.data.errors)
-                         alert(`${path.map((d)=>(`${d}`))} Are Required`)
-                    }
-                    console.log(res);
-                    this.setState({
-                         out:true
-                    })
-               })
-               .catch(err=>{
-                    console.log(err);
-               })
+     //           }
+     //           Axios.post(`http://post-manage.herokuapp.com/Create`,data)
+     //           .then(res=>{
+     //                if(res.data.errors)
+     //                {
+     //                     const path=Object.keys(res.data.errors)
+     //                     alert(`${path.map((d)=>(`${d}`))} Are Required`)
+     //                }
+     //                console.log(res);
+     //                this.setState({
+     //                     out:true
+     //                })
+     //           })
+     //           .catch(err=>{
+     //                console.log(err);
+     //           })
           
-          }
-          else{
-          let formdata =new FormData()
-          formdata.append('file',file)
-          const image=await Axios.post(`http://post-manage.herokuapp.com/Create/upload`,formdata)
-          console.log(image);
-          const data=
-          {
-               Postname:this.state.pt,
-               Description:this.state.pd,
-               Username:localStorage.getItem('Username'),
-               Date:Date.now(),
-               path:{
-                    secure_uri:image.data.url,
-                    id:image.data.url
-               },
-               Likes:0,
+     //      }
+     //      else{
+     //      let formdata =new FormData()
+     //      formdata.append('file',file)
+     //      const image=await Axios.post(`http://post-manage.herokuapp.com/Create/upload`,formdata)
+     //      console.log(image);
+     //      const data=
+     //      {
+     //           Postname:this.state.pt,
+     //           Description:this.state.pd,
+     //           Username:localStorage.getItem('Username'),
+     //           Date:Date.now(),
+     //           path:{
+     //                secure_uri:image.data.url,
+     //                id:image.data.url
+     //           },
+     //           Likes:0,
               
-          }
-          Axios.post(`http://post-manage.herokuapp.com/Create`,data)
-          .then(res=>{
-               if(res.data.errors)
-               {
-                    const path=Object.keys(res.data.errors)
-                    alert(`${path.map((d)=>(`${d}`))} Are Required`)
-               }
-               console.log(res);
+     //      }
+     //      Axios.post(`http://post-manage.herokuapp.com/Create`,data)
+     //      .then(res=>{
+     //           if(res.data.errors)
+     //           {
+     //                const path=Object.keys(res.data.errors)
+     //                alert(`${path.map((d)=>(`${d}`))} Are Required`)
+     //           }
+     //           console.log(res);
             
-               this.setState({
-                    out:true
-               })
-          })
-          .catch(err=>{
-               console.log(err);
-          })
-     }
+     //           this.setState({
+     //                out:true
+     //           })
+     //      })
+     //      .catch(err=>{
+     //           console.log(err);
+     //      })
+     // }
           
          
-        }
+     //    }
         pt(e){
           this.setState({
                pt:e.target.value
@@ -156,3 +156,12 @@ export default class Addpost extends Component {
           )
      }
 }
+ 
+
+
+// headers
+
+// ,{
+//      headers: {
+// 'Authorization': `post token`
+// }}

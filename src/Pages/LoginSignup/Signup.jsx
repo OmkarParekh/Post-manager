@@ -19,20 +19,20 @@ export default class Signup extends Component {
           })
      }
      signup(){
-          Axios.post('https://post-manage.herokuapp.com/signup',{...this.state})
-          .then(res=>{
-               if(res.data.errors)
-               {
-                    const path=Object.keys(res.data.errors)
-                    alert(`${path.map((d)=>(`${d}`))} is Required`)
-               }
-               window.alert(res.data)
+          // Axios.post('https://post-manage.herokuapp.com/signup',{...this.state})
+          // .then(res=>{
+          //      if(res.data.errors)
+          //      {
+          //           const path=Object.keys(res.data.errors)
+          //           alert(`${path.map((d)=>(`${d}`))} is Required`)
+          //      }
+          //      window.alert(res.data)
                
-               console.log(res);
-          })
-          .catch(err=>{
-               console.log(err);
-          })
+          //      console.log(res);
+          // })
+          // .catch(err=>{
+          //      console.log(err);
+          // })
      }
      render() {
           return (
