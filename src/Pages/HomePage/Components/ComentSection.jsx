@@ -14,7 +14,13 @@ export default class ComentSection extends Component {
   }
   fetchcomment() {
     Axios.get(
+      // `http://localhost:7000/lc/getcomments/${this.props.id}`
       `https://post-manage.herokuapp.com/lc/getcomments/${this.props.id}`
+      ,{
+        headers: {
+        'Authorization': `post ${localStorage.getItem('token')}`
+   }
+   }
     )
       .then((res) => {
         console.log(res);
@@ -36,9 +42,13 @@ export default class ComentSection extends Component {
       window.alert("Please Write Commment");
     } else {
       Axios.post(
-        `https://post-manage.herokuapp.com/lc/comments/${
-          this.props.id
-        }/${localStorage.getItem("Username")}/${this.state.comment}`
+        // `http://localhost:7000/lc/comments/${this.props.id}/${this.state.comment}`
+        `https://post-manage.herokuapp.com/lc/comments/${this.props.id}/${this.state.comment}`
+        ,{},{
+          headers: {
+          'Authorization': `post ${localStorage.getItem('token')}`
+     }
+     }
       )
         .then((res) => {
           // alert(res.data);
@@ -51,7 +61,13 @@ export default class ComentSection extends Component {
   }
   delete(id) {
     Axios.post(
+      // `http://localhost:7000/lc/deletecomments/${this.props.id}/${id}`
       `https://post-manage.herokuapp.com/lc/deletecomments/${this.props.id}/${id}`
+      ,{},{
+        headers: {
+        'Authorization': `post ${localStorage.getItem('token')}`
+   }
+   }
     )
       .then((res) => {
         // alert(res.data)
@@ -80,7 +96,7 @@ export default class ComentSection extends Component {
           {this.state.data.map((item) => (
             <li class="list-group-item mt-3">
               <b>{item.Name}</b>: {item.Comment}
-              {item.Name === localStorage.getItem("Username") ? (
+              {item.email === localStorage.getItem("email") ? (
                 <i
                   class="fas fa-times icon-custom"
                   onClick={() => {

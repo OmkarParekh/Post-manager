@@ -20,7 +20,7 @@ export default class Postcon extends Component {
       like: "Like",
     };
     this.state.data.Likedby.map((res) => {
-      if (res === localStorage.getItem("Username")) {
+      if (res === localStorage.getItem("email")) {
         console.log("Done");
         this.state.like = "Liked";
       }
@@ -32,9 +32,15 @@ export default class Postcon extends Component {
   like() {
     if (this.state.like === "Like") {
       Axios.post(
-        `https://post-manage.herokuapp.com/lc/like/${
-          this.state.id
-        }/${localStorage.getItem("Username")}`
+        // `http://localhost:7000/lc/like/${this.state.id}`
+        `https://post-manage.herokuapp.com/lc/like/${this.state.id}`,
+
+        {},
+        {
+          headers: {
+            Authorization: `post ${localStorage.getItem("token")}`,
+          },
+        }
       )
         .then(() => {
           this.setState({
@@ -47,9 +53,15 @@ export default class Postcon extends Component {
         });
     } else {
       Axios.post(
-        `https://post-manage.herokuapp.com/lc/unlike/${
-          this.state.id
-        }/${localStorage.getItem("Username")}`
+        // `http://localhost:7000/lc/unlike/${this.state.id}`
+        `https://post-manage.herokuapp.com/lc/unlike/${this.state.id}`,
+
+        {},
+        {
+          headers: {
+            Authorization: `post ${localStorage.getItem("token")}`,
+          },
+        }
       )
         .then(() => {
           this.setState({
@@ -70,12 +82,8 @@ export default class Postcon extends Component {
     // }
     return (
       <div>
-        <div class="shadow card bg-white my-5 postcard">
-          <h6 class="card-header">{data.Username}</h6>
-          <div className="card-body">
-            <h5 class="card-title">{data.Postname}</h5>
-            <p class="card-text">{data.Description}</p>
-          </div>
+        <div class="card bg-white mb-3 mt-3 postcard ">
+          <h6 class="card-header">{data.UName}</h6>
           {
             data.path ? (
               <img
@@ -135,55 +143,3 @@ export default class Postcon extends Component {
     );
   }
 }
-
-// import React,{useState} from 'react'
-
-// export default function Postcon(props) {
-//      const [data, setdata] = useState(props.data)
-//      const [likd, setlike] = useState('Like')
-//      const [id, setid] = useState(props.data._id)
-//      function like(){
-//                     if(likd==='Like')
-//                     {
-//                          setlike('Liked')
-//                          Axios.post(`https://post-manage.herokuapp.com/lc/like/${id}/Omkar`)
-//                          .then(()=>{
-//                               console.log(data._id)
-//                          })
-//                     }
-//                     else{
-//                          this.setState({
-//                               like:'Like'
-//                          })
-//                     }
-
-//                }
-
-//      return (
-//           <div>
-//                <div>
-//                     <div class="card bg-primary text-white">
-//                 <h6 class='card-header'>{data.Username}</h6>
-//                 <img src="https://devdiscourse.blob.core.windows.net/devnews/15_09_2019_19_55_17_1265758.jpg" class="card-img-top" alt="..."/>
-//                 <div class="card-body">
-//                 <div class='container'>
-//                 <p class="card-text">Like {data.Likes} </p>
-//                 <div class="btn-group " role="group" aria-label="Basic example">
-//                 <button type="button" class="btn btn-primary" onClick={like}>{likd} </button>
-//                 <button type="button" class="btn btn-primary">Comment</button>
-//                 <button type="button" class="btn btn-primary">Share</button>
-//                 </div>
-
-//                 </div>
-//                 <h5 class="card-title">{data.Postname}</h5>
-//            <p class="card-text">{data.Description}</p>
-//                 </div>
-
-//                 <div class="card-footer">
-//                 <small class="text-white">{data.Date}</small>
-//                 </div>
-//                 </div>
-//                 </div>
-//           </div>
-//      )
-// }
