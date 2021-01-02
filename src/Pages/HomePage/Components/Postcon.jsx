@@ -43,13 +43,24 @@ export default class Postcon extends Component {
           },
         }
       )
-        .then(() => {
-          this.setState({
-            like: "Liked",
-            nulike: this.state.nulike + 1,
-            isButtonDisabled: true
-          });
-          setTimeout(() => this.setState({ isButtonDisabled: false }), 2000);
+        .then((data) => {
+          // console.log(data);
+          if(data.data==='Error'){
+        //  console.log('err');
+          }
+          else{
+          
+            
+            this.setState({
+              like: "Liked",
+              nulike: this.state.nulike + 1,
+              isButtonDisabled: true
+              
+            });
+            setTimeout(() => this.setState({ isButtonDisabled: false }), 2000);
+          }
+         
+          
         })
         .catch((err) => {
           alert(err);
@@ -67,13 +78,20 @@ export default class Postcon extends Component {
           },
         }
       )
-        .then(() => {
-          this.setState({
-            like: "Like",
-            nulike: this.state.nulike - 1,
-            isButtonDisabled: true
-          });
-          setTimeout(() => this.setState({ isButtonDisabled: false }), 2000);
+        .then((data) => {
+          if(data.data==='Error'){
+          }
+          else{
+            this.setState({
+              like: "Like",
+              nulike: this.state.nulike - 1,
+              isButtonDisabled: true
+            });
+            setTimeout(() => this.setState({ isButtonDisabled: false }), 2000);
+          }
+            
+          
+         
         })
         .catch((err) => {
           alert(err);
