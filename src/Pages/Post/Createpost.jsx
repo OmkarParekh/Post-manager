@@ -9,7 +9,6 @@ export default class Addpost extends Component {
           this.state={
             image: null,
             file:null,
-            Username:'Developer',
             pt:'',
             pd:'',
             out:false
@@ -34,85 +33,101 @@ export default class Addpost extends Component {
           console.log(this.state.image)
           let file=this.state.image
           if(file===null){
+               if(this.state.pt==='')
+               {
+                    alert('Please Provide Post Title')
+               }
+               else{
+                    const data=
+                    {
+                         Postname:this.state.pt,
+                         Description:this.state.pd,
+                         Date:Date.now(),
+                         Likes:0,
+                       
+                    }
+                    Axios.post(
+                         // `http://localhost:7000/Create`
+                         `http://post-manage.herokuapp.com/Create`
+                    ,data,{
+                         headers: {
+                         'Authorization': `post ${localStorage.getItem('token')}`}
+                    })
+                    .then(res=>{
+                         if(res.data.errors)
+                         {
+                              const path=Object.keys(res.data.errors)
+                              alert(`${path.map((d)=>(`${d}`))} Are Required`)
+                         }
+                         console.log(res);
+                         this.setState({
+                              out:true
+                         })
+                    })
+                    .catch(err=>{
+                         console.log(err);
+                    })
+               }
+               
+          
+          }
+          else{     
+              try{
+          let formdata =new FormData()
+          formdata.append('file',file)
+          const image=await Axios.post(
+          // `http://localhost:7000/Create/upload`
+          `http://post-manage.herokuapp.com/Create/upload`
+          ,formdata,
+          {
+               headers: {
+               'Authorization': `post ${localStorage.getItem('token')}`}
+          }
+          )
+          console.log(image);
+          if(image.data==="UnAuthorized")
+          {
+               console.log('UnAuthorized');
+               alert('UnAuthorized');
+          }
+          else{
                const data=
                {
                     Postname:this.state.pt,
                     Description:this.state.pd,
                     Date:Date.now(),
+                    path:{
+                         secure_uri:image.data.url,
+                         id:image.data.public_id
+                    },
                     Likes:0,
-                  
+                   
                }
-               Axios.post(
-                    
-                    `http://localhost:7000/Create`
-                    // `http://post-manage.herokuapp.com/Create`
-               
-               ,data
-               ,{
+               const Post=await Axios.post(
+                    `http://post-manage.herokuapp.com/Create`
+                    // `http://localhost:7000/Create`
+                    ,data,{
                     headers: {
                     'Authorization': `post ${localStorage.getItem('token')}`
                }
                })
-               .then(res=>{
-                    if(res.data.errors)
-                    {
-                         const path=Object.keys(res.data.errors)
-                         alert(`${path.map((d)=>(`${d}`))} Are Required`)
-                    }
-                    console.log(res);
-                    this.setState({
-                         out:true
-                    })
-               })
-               .catch(err=>{
-                    console.log(err);
-               })
-          
-          }
-          else{
-          let formdata =new FormData()
-          formdata.append('file',file)
-          const image=await Axios.post(`
-          
-          http://post-manage.herokuapp.com/Create/upload`
-          
-          ,formdata)
-          console.log(image);
-          const data=
-          {
-               Postname:this.state.pt,
-               Description:this.state.pd,
-               Date:Date.now(),
-               path:{
-                    secure_uri:image.data.url,
-                    id:image.data.url
-               },
-               Likes:0,
-              
-          }
-          Axios.post(
-               // `http://post-manage.herokuapp.com/Create`
-               `http://localhost:7000/Create`
-               ,data,{
-               headers: {
-               'Authorization': `mykazh ${localStorage.getItem('token')}`
-          }
-          })
-          .then(res=>{
-               if(res.data.errors)
+              if(Post.data.errors)
                {
-                    const path=Object.keys(res.data.errors)
+                    const path=Object.keys(Post.data.errors)
                     alert(`${path.map((d)=>(`${d}`))} Are Required`)
                }
-               console.log(res);
-            
-               this.setState({
+               console.log(Post);
+                 this.setState({
                     out:true
                })
-          })
-          .catch(err=>{
-               console.log(err);
-          })
+          }
+        
+     
+         
+     }
+     catch(err){
+          console.log(err);
+     }
      }
           
          

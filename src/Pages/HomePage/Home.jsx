@@ -14,7 +14,14 @@ export default class Home extends Component {
     this.state = {
       data: [],
     };
-    Axios.get("https://post-manage.herokuapp.com/").then((res) => {
+    Axios.get(
+      // "http://localhost:7000/"
+      "https://post-manage.herokuapp.com/"
+      ,{
+        headers: {
+        'Authorization': `post ${localStorage.getItem('token')}`
+   }
+  }).then((res) => {
       this.setState({
         data: res.data,
       });

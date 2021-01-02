@@ -17,9 +17,9 @@ export default class App extends Component {
 
 <Route path='/' exact component={Login}/>
 <Route path='/home'  exact component={Home} />
-<Route path='/signup' exact component={Signin}/>
+{/* <Route path='/signup' exact component={Signin}/> */}
 <Route path='/Createpost' exact component={Addpost}/>
-<Route path='/auth' exact component={Auth}/>
+{/* <Route path='/auth' exact component={Auth}/> */}
 </Router>
                </div>
           )

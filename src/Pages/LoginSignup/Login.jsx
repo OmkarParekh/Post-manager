@@ -8,64 +8,12 @@ export default class Login extends Component {
      constructor(){
           super()
           this.state={
-               Username:'',
-               Password:'',
                login:false
           }
-          // this.us=this.us.bind(this)
-          // this.ps=this.ps.bind(this)
-          // this.login=this.login.bind(this)
           this.gauth=this.gauth.bind(this)
-          // this.gitauth=this.gitauth.bind(this)
+         
      }
-     // us(e){
-     //      this.setState({
-     //           Username:e.target.value
-     //      })
-     // }
-     // ps(e){
-     //      this.setState({
-     //           Password:e.target.value
-     //      })
-     // }
-     // login(){
-     //      if(this.state.Username===""&&this.state.Password===""){
-     //           window.alert('Please Enter Login Credentials')
-     //      }
-     //      else if(this.state.Username===""){
-     //           window.alert('Please Enter UserName')
-     //      }
-     //      else if(this.state.Password===""){
-     //           window.alert('Please Enter Password')
-     //      }
-     //      else{
-     //           const data={
-     //                Username:this.state.Username,
-     //                Password:this.state.Password
-     //           }
-               
-     //           Axios.post(`https://post-manage.herokuapp.com/login`,data)
-     //           .then(res=>{
-
-     //                console.log(res.data.token)
-     //                this.setState({
-     //                     login:true
-     //                })
-     //               localStorage.setItem('token',res.data.token)
-     //               localStorage.setItem('Name',res.data.Name)
-     //               localStorage.setItem('Username',res.data.Username)
-     //               localStorage.setItem('Photo','')
-     //           })
-     //           .catch(err=>{
-     //                if(err.response.status===401)
-     //                {
-     //                     window.alert('UserName or Password Is Incorrect')
-     //                }
-     //                console.log(err);
-     //           })
-     //      }
-          
-     // }
+  
      gauth(){
           var provider = new firebase.auth.GoogleAuthProvider();
           firebase.auth()
@@ -79,21 +27,23 @@ export default class Login extends Component {
                Name:res.displayName,
                email:res.email
           }
-          Axios.post('http://localhost:7000/oauth',data)
+          Axios.post(
+
+               // 'http://localhost:7000/oauth'
+               `https://post-manage.herokuapp.com/oauth`
+               
+               ,data)
           .then(res=>{
                console.log(res);
                localStorage.setItem('token',res.data.token)
                localStorage.setItem('Name',res.data.Name)
-               localStorage.setItem('Username',res.data.Username)
+               localStorage.setItem('email',res.data.email)
                localStorage.setItem('Photo',res.data.photo)
                this.setState({
                     login:true,
                     })
           })
                
-          //   console.log(credential);
-          //   console.log(token);
-          //   console.log(user);
           }).catch((error) => {
             console.log(error);
           });
