@@ -73,7 +73,7 @@ export default class Postcon extends Component {
             nulike: this.state.nulike - 1,
             isButtonDisabled: true
           });
-          setTimeout(() => this.setState({ isButtonDisabled: false }), 5000);
+          setTimeout(() => this.setState({ isButtonDisabled: false }), 2000);
         })
         .catch((err) => {
           alert(err);
