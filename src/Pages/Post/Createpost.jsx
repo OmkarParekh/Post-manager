@@ -38,12 +38,21 @@ export default class Addpost extends Component {
                {
                     Postname:this.state.pt,
                     Description:this.state.pd,
-                    Username:localStorage.getItem('Username'),
                     Date:Date.now(),
                     Likes:0,
                   
                }
-               Axios.post(`http://post-manage.herokuapp.com/Create`,data)
+               Axios.post(
+                    
+                    `http://localhost:7000/Create`
+                    // `http://post-manage.herokuapp.com/Create`
+               
+               ,data
+               ,{
+                    headers: {
+                    'Authorization': `post ${localStorage.getItem('token')}`
+               }
+               })
                .then(res=>{
                     if(res.data.errors)
                     {
@@ -63,13 +72,16 @@ export default class Addpost extends Component {
           else{
           let formdata =new FormData()
           formdata.append('file',file)
-          const image=await Axios.post(`http://post-manage.herokuapp.com/Create/upload`,formdata)
+          const image=await Axios.post(`
+          
+          http://post-manage.herokuapp.com/Create/upload`
+          
+          ,formdata)
           console.log(image);
           const data=
           {
                Postname:this.state.pt,
                Description:this.state.pd,
-               Username:localStorage.getItem('Username'),
                Date:Date.now(),
                path:{
                     secure_uri:image.data.url,
@@ -78,7 +90,14 @@ export default class Addpost extends Component {
                Likes:0,
               
           }
-          Axios.post(`http://post-manage.herokuapp.com/Create`,data)
+          Axios.post(
+               // `http://post-manage.herokuapp.com/Create`
+               `http://localhost:7000/Create`
+               ,data,{
+               headers: {
+               'Authorization': `mykazh ${localStorage.getItem('token')}`
+          }
+          })
           .then(res=>{
                if(res.data.errors)
                {

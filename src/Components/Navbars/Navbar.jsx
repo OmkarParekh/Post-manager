@@ -36,38 +36,6 @@ export default class Nav extends Component {
           
           const {url}=this.state
         
-               // return(
-               //      <div>
-
-                    
-               //      <nav class="navbar navbar-expand navbar-dark bg-primary">
-               //      <div class='container'>
-               //      <a class="navbar-brand" href="/">Post Manager</a>
-                   
-          
-                    
-                   
-                
-               //      <ul class="navbar-nav">
-               //      <li class="nav-item ">
-              
-               //      </li>
-               //      <li class="nav-item">
-               //      <a class='nav-link text-white' href='/Addpost'>Add</a>
-               //      </li>
-               //      <li class="nav-item">
-               //      <a class='nav-link text-white' href='/' onClick={this.logout}>Logout</a>
-               //      </li>
-                 
-                   
-               //      </ul>
-                    
-               //      </div>
-               //      </nav>
-               //       </div>
-               // )
-          
-       
                return(
                     <div className="">
                     {/* <div class="header"></div> */}
@@ -83,8 +51,8 @@ export default class Nav extends Component {
                       <div class="spinner diagonal part-2"></div>
                     </label>
                     <div id="sidebarMenu">
-                      <ul class="sidebarMenuInner">
-                      <img src={sideimg} className='img-fluid'/>
+                      <ul class="sidebarMenuInner"> 
+                      <img src={localStorage.getItem('Photo')} className='img-fluid rounded-circle mx-auto d-block'/>
                         <li>{localStorage.getItem('Name')}<span>{localStorage.getItem('Username')}</span></li>
                         <li><Link to='/Createpost' >Create Post</Link></li>
                         {/* <li><Link to='/Chat' >All Rooms</Link></li>

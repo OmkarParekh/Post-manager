@@ -15,7 +15,8 @@ export default class Login extends Component {
           // this.us=this.us.bind(this)
           // this.ps=this.ps.bind(this)
           // this.login=this.login.bind(this)
-          this.oauth=this.oauth.bind(this)
+          this.gauth=this.gauth.bind(this)
+          // this.gitauth=this.gitauth.bind(this)
      }
      // us(e){
      //      this.setState({
@@ -65,7 +66,7 @@ export default class Login extends Component {
      //      }
           
      // }
-     oauth(){
+     gauth(){
           var provider = new firebase.auth.GoogleAuthProvider();
           firebase.auth()
           .signInWithPopup(provider)
@@ -85,10 +86,11 @@ export default class Login extends Component {
                localStorage.setItem('Name',res.data.Name)
                localStorage.setItem('Username',res.data.Username)
                localStorage.setItem('Photo',res.data.photo)
-          })
                this.setState({
-               login:true,
-               })
+                    login:true,
+                    })
+          })
+               
           //   console.log(credential);
           //   console.log(token);
           //   console.log(user);
@@ -96,6 +98,7 @@ export default class Login extends Component {
             console.log(error);
           });
      }
+     
      render() {
           if(this.state.login===true){
                return <Redirect to='/home' />
@@ -106,45 +109,20 @@ export default class Login extends Component {
                     
                     <div class="card-body" id='loginspace'>
                     <h2 class="card-title text-center" id='lheader'>Login</h2>
-                    {/* <div class="form-group">
-                    
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Username" onChange={this.us}/>
-                    </div>
-                    <div class="form-group">
-                    
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Password" onChange={this.ps}/>
-                    </div>
-                    <button type="button" class="btn btn-primary login-btn "  onClick={this.login}>Login</button> */}
-                    </div>
-                    </div>
-                    {/* <div class="card text-white bg-primary mb-3 login-2card "  >
-                    <div class="card-body">
-                    <h5 class="card-title text-center">Dont Have Account <a href='/signup' class='text-warning'>Sign up</a></h5>
                     
                     </div>
-                    </div> */}
-                    <div class="card btn text-white bg-primary mb-3 login-2card  " onClick={this.oauth} >
+                    </div>
+                    
+                    <div class="card btn text-white bg-primary mb-3 login-2card  " onClick={this.gauth} >
                     <div class="card-body">
                     <h5 class="card-title text-center">Sign-in with Google </h5>
                     
                     </div>
                     </div>
-                    <div class="card btn text-white bg-primary mb-3 login-2card " onClick={()=>{
-                         alert('facebook')
-                    }} >
-                    <div class="card-body">
-                    <h5 class="card-title text-center">Sign-in with Facebook </h5>
-                    
-                    </div>
-                    </div>
-                    <div class="card btn text-white bg-primary mb-3 login-2card " onClick={()=>{
-                         alert('Github')
-                    }} >
-                    <div class="card-body">
-                    <h5 class="card-title text-center">Sign-in with Github</h5>
-                    
-                    </div>
-                    </div>
+            
+                   
+                  
+                   
                     
                </div>
           )
