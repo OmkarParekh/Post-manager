@@ -63,14 +63,44 @@ export default class Nav extends Component {
     return (
       <div className="">
         {/* <div class="header"></div> */}
-        <nav class="navbar navbar-dark bg-primary">
+        <nav class="navbar navbar-light bg-white shadow">
           {/* <nav class="navbar navbar-light bg-transparent"> */}
           <a class="navbar-brand" href="#">
             Post Manager
           </a>
-          <a class="profile-icon" href="#">
-            <img src={userIcon} alt="" />
-          </a>
+
+          <div class="dropdown mr-1 dropleft">
+            <button
+              type="button"
+              class="btn btn-transparent dropdown-toggle"
+              id="dropdownMenuOffset"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              data-offset="10,20"
+            >
+              <a class="profile-icon" href="#">
+                <img src={userIcon} alt="" />
+              </a>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+              <Link class="dropdown-item" to="/Createpost">
+                Create Post
+              </Link>
+              <Link class="dropdown-item" to="#">
+                Edit Profile
+              </Link>
+              <Link
+                class="dropdown-item"
+                to="/"
+                onClick={() => {
+                  localStorage.clear();
+                }}
+              >
+                Log Out
+              </Link>
+            </div>
+          </div>
         </nav>
         {this.state.url === "/home" ? (
           <>
@@ -79,11 +109,7 @@ export default class Nav extends Component {
               class="openSidebarMenu"
               id="openSidebarMenu"
             />
-            <label for="openSidebarMenu" class="sidebarIconToggle">
-              <div class="spinner diagonal part-1"></div>
-              <div class="spinner horizontal"></div>
-              <div class="spinner diagonal part-2"></div>
-            </label>
+
             <div id="sidebarMenu">
               <ul class="sidebarMenuInner">
                 <img src={sideimg} className="img-fluid" />
@@ -121,11 +147,7 @@ export default class Nav extends Component {
                   class="openSidebarMenu"
                   id="openSidebarMenu"
                 />
-                <label for="openSidebarMenu" class="sidebarIconToggle">
-                  <div class="spinner diagonal part-1"></div>
-                  <div class="spinner horizontal"></div>
-                  <div class="spinner diagonal part-2"></div>
-                </label>
+
                 <div id="sidebarMenu">
                   <ul class="sidebarMenuInner">
                     <img src={sideimg} className="img-fluid" />

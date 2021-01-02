@@ -70,8 +70,12 @@ export default class Postcon extends Component {
     // }
     return (
       <div>
-        <div class="card bg-white mb-3 mt-3 postcard ">
+        <div class="shadow card bg-white my-5 postcard">
           <h6 class="card-header">{data.Username}</h6>
+          <div className="card-body">
+            <h5 class="card-title">{data.Postname}</h5>
+            <p class="card-text">{data.Description}</p>
+          </div>
           {
             data.path ? (
               <img
@@ -119,8 +123,6 @@ export default class Postcon extends Component {
                 <img src={shareIcon} alt="" /> Share
               </button>
             </div>
-            <h5 class="card-title">{data.Postname}</h5>
-            <p class="card-text">{data.Description}</p>
             <p class="card-text">Likes: {this.state.nulike} </p>
           </div>
 

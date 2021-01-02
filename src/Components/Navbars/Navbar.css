@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html,
 body {
   overflow-x: hidden;
@@ -7,7 +8,7 @@ body {
   background: #fff;
   padding: 0;
   margin: 0;
-  /* font-family: 'Varela Round', sans-serif; */
+  font-family: "Poppins", sans-serif;
 }
 /* .header {
      display: block;
@@ -25,18 +26,20 @@ body {
   position: fixed;
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
   z-index: 10;
   top: 0;
 }
-
 .navbar-brand {
   margin-left: 30px;
-  margin-top: 3px;
+  margin-top: 0px;
+  padding-top: 0;
+  font-family: "Bebas Neue", cursive;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 .profile-icon img {
   width: 2rem;
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 .main {
   margin: 0 auto;
@@ -167,4 +170,15 @@ input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   box-sizing: border-box;
   transform: rotate(-135deg);
   margin-top: -9px;
+}
+.dropdown-menu {
+  left: -200%;
+  right: 0;
+}
+.btn-transparent {
+  background: transparent;
+  border-color: transparent;
+}
+.dropleft .dropdown-toggle::before {
+  display: none;
 }
