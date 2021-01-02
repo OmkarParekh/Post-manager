@@ -86,10 +86,12 @@ export default class Nav extends Component {
             </label>
             <div id="sidebarMenu">
               <ul class="sidebarMenuInner">
-                <img src={sideimg} className="img-fluid" />
+                <center>
+                <img src={localStorage.getItem('Photo')} className="img-fluid rounded-circle" />
+                </center  >
                 <li>
                   {localStorage.getItem("Name")}
-                  <span>{localStorage.getItem("Username")}</span>
+                  <span>{localStorage.getItem("email")}</span>
                 </li>
                 <li>
                   <Link to="/Createpost">Create Post</Link>
