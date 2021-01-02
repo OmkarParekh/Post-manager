@@ -1,28 +1,75 @@
-.post{
-     width: 60%;
-     margin-right: auto;
-     margin-left: auto;
-     margin-top: 78px;
+.post {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 78px;
 }
-.btn-group{
-     width: 100%;
-     margin-bottom: 2%;
-     border: 1px solid white;
+.card-header,
+.card-footer {
+  border: none;
+  background: none;
 }
-.post-btn{
-     border: 1px solid white;
-     width: 100%;
+.card-img-top {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+}
+.d-flex .btn {
+  padding: 0;
+}
+.d-flex .btn {
+  margin-right: 1rem;
+}
+.btn:focus {
+  box-shadow: none;
+}
+.post-btn {
+  border: 1px solid white;
+  background: transparent;
+  width: 100%;
+}
+.post-btn .like {
+  width: 1.5rem;
+  transition: all 0.15s ease-in;
+}
+.post-btn img {
+  width: 1.2rem;
+  margin-right: 0.6rem;
 }
 .comment-form {
-     width: 500px;
+  width: 500px;
 }
 .comment-form .input-group {
-     margin: 10px 0; 
+  margin: 10px 0;
 }
-.icon-custom{
-     margin-left: 100%;
+.icon-custom {
+  margin-left: 100%;
 }
-.postcard{
-     width: 70%;
-     margin: auto;
+.postcard {
+  width: 70%;
+  margin: auto;
+}
+
+/* .liked {
+  position: relative;
+}
+.liked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url(./assets/like.svg);
+  width: 20%;
+  box-shadow: 0 0 2rem #000;
+  z-index: 15;
+} */
+@media (min-width: 360px) and (max-width: 575px) {
+  .postcard {
+    width: 100%;
+  }
+  .popup-content {
+    width: 90% !important;
+    padding: 12px !important;
+  }
 }
