@@ -9,7 +9,7 @@ import shareIcon from "../assets/share.png";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import Comment from "./ComentSection";
-import { Link } from "react-router-dom";
+import userIcon from "../../../Components/Navbars/assets/user.svg";
 export default class Postcon extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +18,28 @@ export default class Postcon extends Component {
       id: this.props.data._id,
       nulike: this.props.data.Likes,
       like: "Like",
-      isButtonDisabled: false
+      isButtonDisabled: false,
+      date: {
+        date: [
+          new Date(Number(this.props.data.Date)),
+          new Date(Number(this.props.data.Date)),
+          new Date(Number(this.props.data.Date)),
+        ],
+        months: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ],
+      },
     };
     this.state.data.Likedby.map((res) => {
       if (res === localStorage.getItem("email")) {
@@ -34,42 +55,7 @@ export default class Postcon extends Component {
     if (this.state.like === "Like") {
       Axios.post(
         // `http://localhost:7000/lc/like/${this.state.id}`
-        `https://post-manage.herokuapp.com/lc/like/${this.state.id}`
-
-       , {},
-        {
-          headers: {
-            Authorization: `post ${localStorage.getItem("token")}`,
-          },
-        }
-      )
-        .then((data) => {
-          // console.log(data);
-          if(data.data==='Error'){
-        //  console.log('err');
-          }
-          else{
-          
-            
-            this.setState({
-              like: "Liked",
-              nulike: this.state.nulike + 1,
-              isButtonDisabled: true
-              
-            });
-            setTimeout(() => this.setState({ isButtonDisabled: false }), 2000);
-          }
-         
-          
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    } else {
-      Axios.post(
-        // `http://localhost:7000/lc/unlike/${this.state.id}`,
-        `https://post-manage.herokuapp.com/lc/unlike/${this.state.id}`,
-        
+        `https://post-manage.herokuapp.com/lc/like/${this.state.id}`,
 
         {},
         {
@@ -79,19 +65,43 @@ export default class Postcon extends Component {
         }
       )
         .then((data) => {
-          if(data.data==='Error'){
-          }
-          else{
+          // console.log(data);
+          if (data.data === "Error") {
+            //  console.log('err');
+          } else {
             this.setState({
-              like: "Like",
-              nulike: this.state.nulike - 1,
-              isButtonDisabled: true
+              like: "Liked",
+              nulike: this.state.nulike + 1,
+              isButtonDisabled: true,
             });
             setTimeout(() => this.setState({ isButtonDisabled: false }), 2000);
           }
-            
-          
-         
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    } else {
+      Axios.post(
+        // `http://localhost:7000/lc/unlike/${this.state.id}`,
+        `https://post-manage.herokuapp.com/lc/unlike/${this.state.id}`,
+
+        {},
+        {
+          headers: {
+            Authorization: `post ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+        .then((data) => {
+          if (data.data === "Error") {
+          } else {
+            this.setState({
+              like: "Like",
+              nulike: this.state.nulike - 1,
+              isButtonDisabled: true,
+            });
+            setTimeout(() => this.setState({ isButtonDisabled: false }), 2000);
+          }
         })
         .catch((err) => {
           alert(err);
@@ -99,15 +109,18 @@ export default class Postcon extends Component {
     }
   }
   render() {
-    const { data, like, refresh } = this.state;
+    const { data, like, refresh, date } = this.state;
     // console.log(data._id)
     // if(refresh===true){
     //      return <Redirect to='/home' />
     // }
+    const userPic = localStorage.getItem("Photo");
     return (
       <div>
-        <div class="card bg-white mb-3 mt-3 postcard shadow">
-          <h6 class="card-header">{data.UName}</h6>
+        <div class="card bg-white my-4 postcard shadow">
+          <h6 class="card-header">
+            <img src={!userPic ? userIcon : userPic} alt="" /> {data.UName}
+          </h6>
           {
             data.path ? (
               <img
@@ -126,18 +139,20 @@ export default class Postcon extends Component {
           }
 
           <div class="card-body">
-            <div class="container">
-            
-          
-            </div>
+            <div class="container"></div>
             <h5 class="card-title">{data.Postname}</h5>
-               <p class="card-text">{data.Description}</p>
-               {/* <br/> */}
+            <p class="card-text">{data.Description}</p>
+            {/* <br/> */}
             <div class="d-flex mb-3">
-              <button type="button" class="btn post-btn" onClick={this.like} disabled={this.state.isButtonDisabled}>
+              <button
+                type="button"
+                class="btn post-btn"
+                onClick={this.like}
+                disabled={this.state.isButtonDisabled}
+              >
                 <img
                   src={like === "Like" ? likeOutlineIcon : likeFillIcon}
-                  className="like"
+                  className="like mb-1"
                   alt=""
                 />
                 {like}{" "}
@@ -165,7 +180,10 @@ export default class Postcon extends Component {
           </div>
 
           <div class="card-footer">
-            <small class="">{data.Date}</small>
+            <small class="">
+              {`${date.months[date.date[1].getMonth()]} `}
+              {date.date[0].getDate()}, {date.date[2].getFullYear()}
+            </small>
             {/* <small class="">{new Date(data.Date)}</small> */}
           </div>
         </div>

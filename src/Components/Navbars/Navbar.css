@@ -38,7 +38,8 @@ body {
   letter-spacing: 2px;
 }
 .profile-icon img {
-  width: 2rem;
+  width: 2.3rem;
+  border-radius: 50%;
   /* filter: invert(1); */
 }
 .main {
@@ -181,4 +182,16 @@ input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 }
 .dropleft .dropdown-toggle::before {
   display: none;
+}
+@media (min-width: 360px) and (max-width: 575.98px) {
+  .post-btn .like {
+    width: 1.2rem;
+  }
+  .post-btn img {
+    width: 1rem;
+    margin-right: 0.5rem;
+  }
+  .d-flex .btn {
+    margin-right: 1rem;
+  }
 }

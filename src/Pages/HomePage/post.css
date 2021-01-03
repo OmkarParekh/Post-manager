@@ -4,6 +4,11 @@
   margin-left: auto;
   margin-top: 78px;
 }
+.card-header img {
+  width: 25px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
 .card-header,
 .card-footer {
   border: none;
