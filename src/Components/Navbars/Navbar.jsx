@@ -65,9 +65,9 @@ export default class Nav extends Component {
         {/* <div class="header"></div> */}
         <nav class="navbar navbar-light bg-white shadow">
           {/* <nav class="navbar navbar-light bg-transparent"> */}
-          <a class="navbar-brand" href="#">
+          <Link class="navbar-brand" to="/">
             Post Manager
-          </a>
+          </Link>
 
           <div class="dropdown mr-1 dropleft">
             <button

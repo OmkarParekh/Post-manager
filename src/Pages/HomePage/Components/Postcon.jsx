@@ -82,7 +82,7 @@ export default class Postcon extends Component {
     // }
     return (
       <div>
-        <div class="card bg-white mb-3 mt-3 postcard ">
+        <div class="card bg-white mb-3 mt-3 postcard shadow">
           <h6 class="card-header">{data.UName}</h6>
           {
             data.path ? (
