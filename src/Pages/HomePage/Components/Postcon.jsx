@@ -18,10 +18,11 @@ export default class Postcon extends Component {
       id: this.props.data._id,
       nulike: this.props.data.Likes,
       like: "Like",
+      isButtonDisabled: false
     };
     this.state.data.Likedby.map((res) => {
       if (res === localStorage.getItem("email")) {
-        console.log("Done");
+        // console.log("Done");
         this.state.like = "Liked";
       }
     });
@@ -33,28 +34,42 @@ export default class Postcon extends Component {
     if (this.state.like === "Like") {
       Axios.post(
         // `http://localhost:7000/lc/like/${this.state.id}`
-        `https://post-manage.herokuapp.com/lc/like/${this.state.id}`,
+        `https://post-manage.herokuapp.com/lc/like/${this.state.id}`
 
-        {},
+       , {},
         {
           headers: {
             Authorization: `post ${localStorage.getItem("token")}`,
           },
         }
       )
-        .then(() => {
-          this.setState({
-            like: "Liked",
-            nulike: this.state.nulike + 1,
-          });
+        .then((data) => {
+          // console.log(data);
+          if(data.data==='Error'){
+        //  console.log('err');
+          }
+          else{
+          
+            
+            this.setState({
+              like: "Liked",
+              nulike: this.state.nulike + 1,
+              isButtonDisabled: true
+              
+            });
+            setTimeout(() => this.setState({ isButtonDisabled: false }), 2000);
+          }
+         
+          
         })
         .catch((err) => {
           alert(err);
         });
     } else {
       Axios.post(
-        // `http://localhost:7000/lc/unlike/${this.state.id}`
+        // `http://localhost:7000/lc/unlike/${this.state.id}`,
         `https://post-manage.herokuapp.com/lc/unlike/${this.state.id}`,
+        
 
         {},
         {
@@ -63,11 +78,20 @@ export default class Postcon extends Component {
           },
         }
       )
-        .then(() => {
-          this.setState({
-            like: "Like",
-            nulike: this.state.nulike - 1,
-          });
+        .then((data) => {
+          if(data.data==='Error'){
+          }
+          else{
+            this.setState({
+              like: "Like",
+              nulike: this.state.nulike - 1,
+              isButtonDisabled: true
+            });
+            setTimeout(() => this.setState({ isButtonDisabled: false }), 2000);
+          }
+            
+          
+         
         })
         .catch((err) => {
           alert(err);
@@ -102,9 +126,15 @@ export default class Postcon extends Component {
           }
 
           <div class="card-body">
-            <div class="container"></div>
+            <div class="container">
+            
+          
+            </div>
+            <h5 class="card-title">{data.Postname}</h5>
+               <p class="card-text">{data.Description}</p>
+               {/* <br/> */}
             <div class="d-flex mb-3">
-              <button type="button" class="btn post-btn" onClick={this.like}>
+              <button type="button" class="btn post-btn" onClick={this.like} disabled={this.state.isButtonDisabled}>
                 <img
                   src={like === "Like" ? likeOutlineIcon : likeFillIcon}
                   className="like"
