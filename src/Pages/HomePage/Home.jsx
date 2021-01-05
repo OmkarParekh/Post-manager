@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Post from "./Components/Postcon";
 import "./post.css";
 import Axios from "axios";
@@ -16,12 +15,13 @@ export default class Home extends Component {
     };
     Axios.get(
       // "http://localhost:7000/"
-      "https://post-manage.herokuapp.com/"
-      ,{
+      "https://post-manage.herokuapp.com/",
+      {
         headers: {
-        'Authorization': `post ${localStorage.getItem('token')}`
-   }
-  }).then((res) => {
+          Authorization: `post ${localStorage.getItem("token")}`,
+        },
+      }
+    ).then((res) => {
       this.setState({
         data: res.data,
       });

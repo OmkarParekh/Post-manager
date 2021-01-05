@@ -40,6 +40,7 @@
   width: 80%;
 }
 .google-btn {
+  cursor: pointer;
   width: 202px;
   height: 42px;
   background-color: #4285f4;

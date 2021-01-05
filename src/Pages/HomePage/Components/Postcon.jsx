@@ -41,12 +41,12 @@ export default class Postcon extends Component {
         ],
       },
     };
-    this.state.data.Likedby.map((res) => {
-      if (res === localStorage.getItem("email")) {
-        // console.log("Done");
-        this.state.like = "Liked";
-      }
-    });
+    this.state.data.Likedby.map((res) =>
+      res === localStorage.getItem("email") ? (this.state.like = "Liked") : ""
+    );
+    // if (res === localStorage.getItem("email")) {
+    //   this.state.like = "Liked";
+    // }
 
     this.like = this.like.bind(this);
   }
@@ -109,7 +109,7 @@ export default class Postcon extends Component {
     }
   }
   render() {
-    const { data, like, refresh, date } = this.state;
+    const { data, like, date } = this.state;
     // console.log(data._id)
     // if(refresh===true){
     //      return <Redirect to='/home' />

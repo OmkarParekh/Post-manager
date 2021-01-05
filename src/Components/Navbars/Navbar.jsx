@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
-import Axios from "axios";
-import sideimg from "./assets/sidephoto.jpg";
-import userIcon from "./assets/user.svg";
 import "./Navbar.css";
 export default class Nav extends Component {
   constructor() {
@@ -79,9 +76,9 @@ export default class Nav extends Component {
               aria-expanded="false"
               data-offset="10,20"
             >
-              <a class="profile-icon" href="#">
+              <span class="profile-icon">
                 <img src={!userPic ? "" : userPic} alt="" />
-              </a>
+              </span>
             </button>
             {url === "/" ? (
               <div></div>

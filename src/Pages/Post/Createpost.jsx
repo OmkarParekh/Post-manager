@@ -1,42 +1,42 @@
-import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 // import '../App.css'
 import "./create.css";
 import Axios from "axios";
-export default class Addpost extends Component {
-  constructor() {
-    super();
-    this.state = {
-      image: null,
-      file: null,
-      pt: "",
-      pd: "",
-      out: false,
-    };
+import imgUpload from "./assets/file-upload.svg";
+import { useDropzone } from "react-dropzone";
 
-    this.imageupload = this.imageupload.bind(this);
-    this.dataupload = this.dataupload.bind(this);
-    this.pt = this.pt.bind(this);
-    this.pd = this.pd.bind(this);
-  }
-  imageupload(e) {
-    let images = e.target.files[0];
+export default function Addpost() {
+  const [fileImage, setFileImage] = useState(null);
+  const [url, setURL] = useState(null);
+  const [pt, setPt] = useState("");
+  const [pd, setPd] = useState("");
+  const [out, setOut] = useState(false);
 
-    this.setState({
-      image: images,
-      file: URL.createObjectURL(e.target.files[0]),
-    });
-  }
-  async dataupload(e) {
-    console.log(this.state.image);
-    let file = this.state.image;
+  // function imageupload(e) {
+  //   let images = e.target.files[0];
+  //   setFileImage(images);
+  //   setFile(URL.createObjectURL(e.target.files[0]));
+  // }
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    accept: "image/*",
+    onDrop: (acceptedFiles) => {
+      console.log(acceptedFiles[0]);
+      setFileImage(acceptedFiles[0]);
+      setURL(URL.createObjectURL(acceptedFiles[0]));
+    },
+  });
+  console.log();
+  async function dataupload(e) {
+    console.log(fileImage);
+    let file = fileImage;
     if (file === null) {
-      if (this.state.pt === "") {
+      if (pt === "") {
         alert("Please Provide Post Title");
       } else {
         const data = {
-          Postname: this.state.pt,
-          Description: this.state.pd,
+          Postname: pt,
+          Description: pd,
           Date: Date.now(),
           Likes: 0,
         };
@@ -56,9 +56,7 @@ export default class Addpost extends Component {
               alert(`${path.map((d) => `${d}`)} Are Required`);
             }
             console.log(res);
-            this.setState({
-              out: true,
-            });
+            setOut(true);
           })
           .catch((err) => {
             console.log(err);
@@ -67,7 +65,7 @@ export default class Addpost extends Component {
     } else {
       try {
         let formdata = new FormData();
-        formdata.append("file", file);
+        formdata.append("file", fileImage);
         const image = await Axios.post(
           // `http://localhost:7000/Create/upload`
           `http://post-manage.herokuapp.com/Create/upload`,
@@ -84,8 +82,8 @@ export default class Addpost extends Component {
           alert("UnAuthorized");
         } else {
           const data = {
-            Postname: this.state.pt,
-            Description: this.state.pd,
+            Postname: pt,
+            Description: pd,
             Date: Date.now(),
             path: {
               secure_uri: image.data.url,
@@ -108,87 +106,92 @@ export default class Addpost extends Component {
             alert(`${path.map((d) => `${d}`)} Are Required`);
           }
           console.log(Post);
-          this.setState({
-            out: true,
-          });
+          setOut(true);
         }
       } catch (err) {
         console.log(err);
       }
     }
   }
-  pt(e) {
-    this.setState({
-      pt: e.target.value,
-    });
+  function p_t(e) {
+    setPt(e.target.value);
   }
-  pd(e) {
-    this.setState({
-      pd: e.target.value,
-    });
+  function p_d(e) {
+    setPd(e.target.value);
   }
-  render() {
-    const { file, out } = this.state;
-    if (out === true) {
-      return <Redirect to="/home" />;
-    }
-    return (
-      <div class="Create">
-        <form>
-          <div class="card border-0" id="addcar">
-            <h1 class="text-primary">Posting</h1>
-            {file === null ? (
-              <div></div>
-            ) : (
-              <img
-                src={this.state.file}
-                class="img-fluid addpostimg"
-                id="addimg"
-              />
-            )}
+  if (out === true) {
+    return <Redirect to="/home" />;
+  }
+  return (
+    <div class="Create">
+      <form>
+        <div class="card border-0" id="addcar">
+          <h1 class="text-primary">CREATE YOUR POST HERE</h1>
+          {fileImage === null ? (
+            <div></div>
+          ) : (
+            <img
+              src={url}
+              alt=""
+              className="img-fluid addpostimg"
+              id="addimg"
+            />
+          )}
 
-            <div class="card-body">
-              <div class="input-group mb-3">
-                <div class="custom-file">
-                  <input
-                    type="file"
-                    accept="image/gif, image/jpeg, image/png"
-                    onChange={this.imageupload}
-                    class="custom-file-input"
-                    id="inputGroupFile02"
-                  />
-                  <label
-                    class="custom-file-label"
-                    aria-describedby="inputGroupFileAddon02"
-                  >
-                    Choose file
-                  </label>
-                </div>
-                <div class="input-group-append"></div>
-              </div>
-              <div class="form-group">
-                <label class="text-primary">Post Title</label>
-                <input type="text" class="form-control" onChange={this.pt} />
-              </div>
-              <div class="form-group">
-                <label class="text-primary">Description</label>
-                <textarea
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  onChange={this.pd}
+          <div class="card-body">
+            <div class="input-group mb-3">
+              <div class="custom-file" {...getRootProps()}>
+                <input
+                  // onChange={imageupload}
+                  class="custom-file-input"
+                  id="inputGroupFile02"
+                  {...getInputProps()}
                 />
+                <label
+                  class="custom-file-label"
+                  htmlFor="inputGroupFile02"
+                  aria-describedby="inputGroupFileAddon02"
+                >
+                  {/* Choose File */}
+                  <center>
+                    <img
+                      src={imgUpload}
+                      alt="imgUpload"
+                      className="upload-img"
+                    />
+                    <div className="drag-text">
+                      {isDragActive
+                        ? "Drag Image Here"
+                        : "Drag and Drop the image or Click Here."}
+                    </div>
+                    {fileImage == null ? "Choose File" : fileImage.name}
+                  </center>
+                </label>
               </div>
-
-              <input
-                type="button"
-                class="btn btn-primary"
-                value="Add"
-                onClick={this.dataupload}
+              <div class="input-group-append"></div>
+            </div>
+            <div class="form-group">
+              <label class="text-primary">Post Title</label>
+              <input type="text" class="form-control" onChange={p_t} />
+            </div>
+            <div class="form-group">
+              <label class="text-primary">Description</label>
+              <textarea
+                class="form-control"
+                id="exampleInputEmail1"
+                onChange={p_d}
               />
             </div>
+
+            <input
+              type="button"
+              class="btn btn-primary"
+              value="Add"
+              onClick={dataupload}
+            />
           </div>
-        </form>
-      </div>
-    );
-  }
+        </div>
+      </form>
+    </div>
+  );
 }

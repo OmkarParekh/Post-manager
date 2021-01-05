@@ -4,7 +4,6 @@ import { Redirect } from "react-router-dom";
 import "./LoginSignup.css";
 import firebase from "../../Components/Firebase/Firebase";
 import landingSVG from "./assets/social_media.svg";
-import gIcon from "./assets/gIcon.svg";
 export default class Login extends Component {
   constructor() {
     super();
@@ -66,6 +65,7 @@ export default class Login extends Component {
                     <img
                       class="google-icon"
                       src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                      alt=""
                     />
                   </div>
                   <p class="btn-text">
@@ -79,6 +79,7 @@ export default class Login extends Component {
                     <img
                       class="google-icon"
                       src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                      alt=""
                     />
                   </div>
                   <p class="btn-text">
