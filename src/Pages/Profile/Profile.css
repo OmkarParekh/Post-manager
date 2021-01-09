@@ -1,0 +1,12 @@
+.edit_wrapper {
+  margin-top: 6rem;
+}
+.edit-heading {
+  margin-bottom: 2rem;
+}
+.profile-picture {
+  background: rgb(173, 173, 173);
+  width: 10rem !important;
+  height: 10rem !important;
+  border-radius: 50%;
+}

@@ -87,8 +87,8 @@ export default class Nav extends Component {
                 <Link class="dropdown-item" to="/Createpost">
                   Create Post
                 </Link>
-                <Link class="dropdown-item" to="#">
-                  Edit Profile
+                <Link class="dropdown-item" to="/profile">
+                  Profile
                 </Link>
                 <Link
                   class="dropdown-item"
