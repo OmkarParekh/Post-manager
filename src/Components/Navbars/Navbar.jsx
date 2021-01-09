@@ -67,29 +67,41 @@ export default class Nav extends Component {
           </Link>
 
           <div class="dropdown mr-1 dropleft">
-            <button
-              type="button"
-              class="btn btn-transparent dropdown-toggle"
-              id="dropdownMenuOffset"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              data-offset="10,20"
-            >
-              <span class="profile-icon">
-                <img src={!userPic ? "" : userPic} alt="" />
-              </span>
-            </button>
+            {!!userPic ? (
+              <button
+                type="button"
+                class="btn btn-transparent dropdown-toggle"
+                id="dropdownMenuOffset"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                data-offset="10,20"
+              >
+                <span class="profile-icon">
+                  <img src={userPic} alt="" />
+                </span>
+              </button>
+            ) : (
+              ""
+            )}
             {url === "/" ? (
-              <div></div>
+              !!userPic ? (
+                <Redirect to="/home" />
+              ) : (
+                <div></div>
+              )
             ) : (
               <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                <Link class="dropdown-item" to="/home">
+                  Home
+                </Link>
                 <Link class="dropdown-item" to="/Createpost">
                   Create Post
                 </Link>
                 <Link class="dropdown-item" to="/profile">
                   Profile
                 </Link>
+                <div class="dropdown-divider"></div>
                 <Link
                   class="dropdown-item"
                   to="/"
