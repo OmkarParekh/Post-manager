@@ -114,12 +114,12 @@ export default class Postcon extends Component {
     // if(refresh===true){
     //      return <Redirect to='/home' />
     // }
-    const userPic = localStorage.getItem("Photo");
+
     return (
       <div>
         <div class="card bg-white my-4 postcard shadow">
           <h6 class="card-header">
-            <img src={!userPic ? userIcon : userPic} alt="" /> {data.UName}
+            <img src={!data.Uphoto ? userIcon : data.Uphoto} alt="" /> {data.UName}
           </h6>
           {
             data.path ? (
