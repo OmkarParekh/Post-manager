@@ -12,6 +12,13 @@ export default class Login extends Component {
     };
     this.gauth = this.gauth.bind(this);
   }
+  componentDidMount(){
+    if(localStorage.getItem('token')){
+      this.setState({
+        login:true
+      })
+    }
+  }
 
   gauth() {
     var provider = new firebase.auth.GoogleAuthProvider();
