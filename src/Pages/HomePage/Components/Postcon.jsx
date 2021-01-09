@@ -41,6 +41,7 @@ export default class Postcon extends Component {
         ],
       },
     };
+
     this.state.data.Likedby.map((res) =>
       res === localStorage.getItem("email") ? (this.state.like = "Liked") : ""
     );
@@ -172,7 +173,7 @@ export default class Postcon extends Component {
                 </>
               </Popup>
 
-              <button type="button" class="btn post-btn">
+              <button type="button" class="btn post-btn" >
                 <img src={shareIcon} alt="" /> Share
               </button>
             </div>

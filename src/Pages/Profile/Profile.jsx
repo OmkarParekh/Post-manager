@@ -26,6 +26,7 @@ export default class Profile extends Component {
       });
     });
   }
+ 
   render() {
     const { data,profile } = this.state;
     return (
