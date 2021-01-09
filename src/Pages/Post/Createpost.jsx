@@ -42,7 +42,7 @@ export default function Addpost() {
         };
         Axios.post(
           // `http://localhost:7000/Create`
-          `http://post-manage.herokuapp.com/Create`,
+          `https://post-manage.herokuapp.com/Create`,
           data,
           {
             headers: {
@@ -68,7 +68,7 @@ export default function Addpost() {
         formdata.append("file", fileImage);
         const image = await Axios.post(
           // `http://localhost:7000/Create/upload`
-          `http://post-manage.herokuapp.com/Create/upload`,
+          `https://post-manage.herokuapp.com/Create/upload`,
           formdata,
           {
             headers: {
@@ -92,7 +92,7 @@ export default function Addpost() {
             Likes: 0,
           };
           const Post = await Axios.post(
-            `http://post-manage.herokuapp.com/Create`,
+            `https://post-manage.herokuapp.com/Create`,
             // `http://localhost:7000/Create`
             data,
             {
