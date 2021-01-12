@@ -19,7 +19,7 @@
   margin-left: 1rem;
 }
 .dropdown-menu {
-  min-width: 7rem;
+  min-width: 8rem;
 }
 .dropdown-toggle::after {
   display: none;
