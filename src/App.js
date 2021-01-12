@@ -6,6 +6,8 @@ import Login from "./Pages/LoginSignup/Login";
 import Nav from "./Components/Navbars/Navbar";
 import Profile from "./Pages/Profile/Profile";
 import EditProfile from "./Pages/Edit Profile/EditProfile";
+import Editpost from "./Pages/Post/Editpost";
+import Singlepost from "./Pages/Post/Singlepost";
 export default class App extends Component {
   render() {
     return (
@@ -17,6 +19,8 @@ export default class App extends Component {
           <Route path="/profile" exact component={Profile} />
           <Route path="/edit" exact component={EditProfile} />
           <Route path="/Createpost" exact component={Addpost} />
+          <Route path="/Edit/:id" exact component={Editpost} />
+          <Route path="/post/:id" exact component={Singlepost} />
         </Router>
       </div>
     );
