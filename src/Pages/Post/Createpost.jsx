@@ -149,7 +149,6 @@ export default function Addpost() {
                 />
                 <label
                   class="custom-file-label"
-                  htmlFor="inputGroupFile02"
                   aria-describedby="inputGroupFileAddon02"
                 >
                   {/* Choose File */}

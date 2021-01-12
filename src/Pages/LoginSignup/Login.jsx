@@ -12,11 +12,11 @@ export default class Login extends Component {
     };
     this.gauth = this.gauth.bind(this);
   }
-  componentDidMount(){
-    if(localStorage.getItem('token')){
+  componentDidMount() {
+    if (localStorage.getItem("token")) {
       this.setState({
-        login:true
-      })
+        login: true,
+      });
     }
   }
 
@@ -60,47 +60,35 @@ export default class Login extends Component {
       return <Redirect to="/home" />;
     }
     return (
-      <div class="container">
-        <div className="landing-wrapper">
-          <center>
+      <div class="landing-wrapper">
+        <div className="row flex-row-reverse">
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <h1 className="heading1">POST MANAGER</h1>
             <p className="subtitle mb-5">Post about whatever you like.</p>
-            <div className="row c-width">
-              <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="google-btn" onClick={this.gauth}>
-                  <div class="google-icon-wrapper">
-                    <img
-                      class="google-icon"
-                      src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                      alt=""
-                    />
-                  </div>
-                  <p class="btn-text">
-                    <b>Sign in with google</b>
-                  </p>
-                </div>
+            {/* <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12"> */}
+            {/* <div className="g-wrapper"> */}
+            <div class="google-btn" onClick={this.gauth}>
+              <div class="google-icon-wrapper">
+                <img
+                  class="google-icon"
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                  alt=""
+                />
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="google-btn" onClick={this.gauth}>
-                  <div class="google-icon-wrapper">
-                    <img
-                      class="google-icon"
-                      src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                      alt=""
-                    />
-                  </div>
-                  <p class="btn-text">
-                    <b>Sign up with google</b>
-                  </p>
-                </div>
-              </div>
+              <p class="btn-text">
+                <b>Continue With Google</b>
+              </p>
             </div>
+            {/* </div> */}
+            {/* </div> */}
+          </div>
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <img
               src={landingSVG}
               className="landing-img mt-5"
               alt="landingImage"
             />
-          </center>
+          </div>
         </div>
       </div>
     );

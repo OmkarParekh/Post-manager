@@ -1,0 +1,39 @@
+.edit-profile {
+  margin-top: 6rem;
+}
+.edit-picture img {
+  border-radius: 50%;
+  position: relative !important;
+  margin: 1.6rem auto;
+}
+.edit-picture {
+  position: relative;
+}
+.edit-picture .custom-file-input {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.edit-picture .fas.fa-pen {
+  position: absolute;
+  top: 15%;
+  left: 5.7rem;
+  color: #000000;
+  font-size: 1.1rem;
+  z-index: 4;
+}
+
+.edit-data .form-control {
+  margin-bottom: 1.6rem;
+}
+.btn-update {
+  background: #b9ffb7d2;
+  color: #07cf00;
+  letter-spacing: 2px;
+}
+.btn-update:hover {
+  background: #18e011;
+  color: #ffffff;
+}

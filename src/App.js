@@ -5,6 +5,7 @@ import Addpost from "./Pages/Post/Createpost";
 import Login from "./Pages/LoginSignup/Login";
 import Nav from "./Components/Navbars/Navbar";
 import Profile from "./Pages/Profile/Profile";
+import EditProfile from "./Pages/Edit Profile/EditProfile";
 export default class App extends Component {
   render() {
     return (
@@ -14,6 +15,7 @@ export default class App extends Component {
           <Route path="/" exact component={Login} />
           <Route path="/home" exact component={Home} />
           <Route path="/profile" exact component={Profile} />
+          <Route path="/edit" exact component={EditProfile} />
           <Route path="/Createpost" exact component={Addpost} />
         </Router>
       </div>

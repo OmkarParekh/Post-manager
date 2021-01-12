@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import '../App.css'
+import { Link } from "react-router-dom";
 import "../post.css";
 import Axios from "axios";
 import commentOutline from "../assets/comment-alt.svg";
@@ -118,8 +118,29 @@ export default class Postcon extends Component {
     return (
       <div>
         <div class="card bg-white my-4 postcard shadow">
-          <h6 class="card-header">
-            <img src={!data.Uphoto ? userIcon : data.Uphoto} alt="" /> {data.UName}
+          <h6 class="card-header d-flex justify-content-between">
+            <div className="user">
+              <img src={!data.Uphoto ? userIcon : data.Uphoto} alt="" />{" "}
+              {data.UName}
+            </div>
+            <div class="dropdown dropleft">
+              <button
+                type="button"
+                class="btn btn-transparent dropdown-toggle"
+                id="dropdownMenuOffset"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                data-offset="40,0"
+              >
+                <span class="profile-icon">
+                  <i class="fas fa-ellipsis-v"></i>
+                </span>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                <div class="dropdown-item">Delete</div>
+              </div>
+            </div>
           </h6>
           {
             data.path ? (
@@ -172,9 +193,9 @@ export default class Postcon extends Component {
                 </>
               </Popup>
 
-              <button type="button" class="btn post-btn">
+              <Link to={`/posts/${data._id}`} class="btn post-btn">
                 <img src={shareIcon} alt="" /> Share
-              </button>
+              </Link>
             </div>
             <p class="card-text">Likes: {this.state.nulike} </p>
           </div>

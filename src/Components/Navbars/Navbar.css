@@ -33,7 +33,7 @@ body {
   margin-left: 30px;
   margin-top: 0px;
   padding-top: 0;
-  font-family: "Bebas Neue", cursive;
+  font-family: "Bebas Neue", sans-serif;
   font-weight: 700;
   letter-spacing: 2px;
 }
@@ -60,117 +60,6 @@ body {
   font-size: 3em;
   font-weight: bold;
   letter-spacing: 1.25px;
-}
-#sidebarMenu {
-  height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 215px;
-  margin-top: 58px;
-  transform: translateX(-250px);
-  transition: transform 250ms ease-in-out;
-  background: #007bff;
-  box-shadow: 1rem 0 2rem rgba(0, 0, 0, 0.178);
-}
-.sidebarMenuInner {
-  margin: 0;
-  padding: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-.sidebarMenuInner li {
-  list-style: none;
-  color: #fff;
-  /* text-transform: uppercase; */
-  font-weight: bold;
-  padding: 20px;
-  letter-spacing: 2px;
-  cursor: pointer;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-.sidebarMenuInner li span {
-  display: block;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
-  letter-spacing: 2px;
-  font-weight: 400;
-}
-.sidebarMenuInner li a {
-  color: #fff;
-  /* text-transform: uppercase; */
-  font-weight: normal;
-  cursor: pointer;
-  text-decoration: none;
-}
-input[type="checkbox"]:checked ~ #sidebarMenu {
-  transform: translateX(0);
-}
-body:active ~ #sidebarMenu {
-  transform: translateX(0);
-}
-
-input[type="checkbox"] {
-  transition: all 0.3s;
-  box-sizing: border-box;
-  display: none;
-}
-.sidebarIconToggle {
-  transition: all 0.3s;
-  box-sizing: border-box;
-  cursor: pointer;
-  position: absolute;
-  z-index: 99;
-  height: 100%;
-  width: 100%;
-  top: 22px;
-  left: 15px;
-  height: 22px;
-  width: 22px;
-}
-.spinner {
-  transition: all 0.3s;
-  box-sizing: border-box;
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  background-color: #fff;
-}
-.horizontal {
-  transition: all 0.3s;
-  box-sizing: border-box;
-  position: relative;
-  float: left;
-  margin-top: 3px;
-}
-.diagonal.part-1 {
-  position: relative;
-  transition: all 0.3s;
-  box-sizing: border-box;
-  float: left;
-}
-.diagonal.part-2 {
-  transition: all 0.3s;
-  box-sizing: border-box;
-  position: relative;
-  float: left;
-  margin-top: 3px;
-}
-input[type="checkbox"]:checked ~ .sidebarIconToggle > .horizontal {
-  transition: all 0.3s;
-  box-sizing: border-box;
-  opacity: 0;
-}
-input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
-  transition: all 0.3s;
-  box-sizing: border-box;
-  transform: rotate(135deg);
-  margin-top: 8px;
-}
-input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
-  transition: all 0.3s;
-  box-sizing: border-box;
-  transform: rotate(-135deg);
-  margin-top: -9px;
 }
 .dropdown-menu {
   left: -200%;
