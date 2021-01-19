@@ -109,7 +109,10 @@ export default class Postcon extends Component {
     }
   }
   Delete(id,iid){
-    Axios.post(`http://localhost:7000/delete/${id}/${iid}`,
+    Axios.post(
+      // `http://localhost:7000/delete/${id}/${iid}`,
+      `https://post-manage.herokuapp.com/delete/${id}/${iid}`,
+
     {},
     {
       headers: {
