@@ -1,4 +1,5 @@
 import "./Profile.css";
+import '../../App.css'
 import React, { Component } from "react";
 import Axios from "axios";
 import Post from "../HomePage/Components/Postcon";
@@ -33,7 +34,7 @@ export default class Profile extends Component {
     return (
       <div className="container profile_wrapper">
         {Object.keys(profile).length === 0 ? (
-          <></>
+          <div id="loading"></div>
         ) : (
           <>
             <div className="d-flex align-items-center flex-wrap">
