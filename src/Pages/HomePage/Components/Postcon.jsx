@@ -108,6 +108,31 @@ export default class Postcon extends Component {
         });
     }
   }
+  Delete(id,iid){
+    Axios.post(`http://localhost:7000/delete/${id}/${iid}`,
+    {},
+    {
+      headers: {
+        Authorization: `post ${localStorage.getItem("token")}`,
+      },
+    })
+    .then(res=>{
+      console.log(res);
+      if(res.data==='Unauth')
+      {
+      alert('Some thing Went Wrong')
+      }
+      else{
+        alert('Post Delted')
+        console.log('Post Deleted');
+      }
+     
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+    
+  }
   render() {
     const { data, like, date } = this.state;
     // console.log(data._id)
@@ -124,7 +149,8 @@ export default class Postcon extends Component {
               {data.UName}
             </div>
             <div class="dropdown dropleft">
-              <button
+           { window.location.pathname==='/profile'?  
+           <button
                 type="button"
                 class="btn btn-transparent dropdown-toggle"
                 id="dropdownMenuOffset"
@@ -137,9 +163,12 @@ export default class Postcon extends Component {
                   <i class="fas fa-ellipsis-v"></i>
                 </span>
               </button>
+             :<></>} 
               <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                <div class="dropdown-item">Delete</div>
-                <div class="dropdown-item">Edit Post</div>
+                <div class="dropdown-item" onClick={()=>{
+                  this.Delete(data._id,data.path?data.path.id:"Nophoto")
+                }}>Delete</div>
+                <Link to={`/Edit/${data._id}`}><div class="dropdown-item">Edit Post</div></Link>
               </div>
             </div>
           </h6>

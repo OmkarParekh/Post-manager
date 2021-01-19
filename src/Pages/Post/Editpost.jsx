@@ -1,5 +1,6 @@
 import Axios from 'axios'
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import './create.css'
 export default class Editpost extends Component {
      constructor(props){
@@ -7,20 +8,40 @@ export default class Editpost extends Component {
           this.state={
                data:{},
                p_t:"",
-               p_d:""
+               p_d:"",
+               done:false
           }
           Axios.get(
-               // `http://localhost:7000/post/${this.props.match.params.id}`,
-               `https://post-manage.herokuapp.com/update/${this.props.match.params.id}`,
+               // `http://localhost:7000/update/fetch/${this.props.match.params.id}`,
+               `https://post-manage.herokuapp.com/update/fetch/${this.props.match.params.id}`,
                {headers: {Authorization: `post ${localStorage.getItem("token")}`}}
           )
           .then(res=>{
-               this.setState({
-                   data:res.data ,
-                   p_t:res.data.Postname,
-                   p_d:res.data.Description
-               })
+               if(Object.keys(res.data).length===0 )
+               {
+                    // console.log('Object is trigged');
+                    this.setState({
+                         done:true
+                    })  
+               }
+               else{
+                    this.setState({
+                         data:res.data ,
+                         p_t:res.data.Postname,
+                         p_d:res.data.Description
+                     })   
+               }
+            
           })
+          .catch(err=>{
+               console.log('Something Gone Wrong');
+               this.setState({
+                    done:true
+               })
+               console.log(err);
+          })
+
+          this.update=this.update.bind(this)
 
      }
      update(){
@@ -36,9 +57,25 @@ export default class Editpost extends Component {
                data,
                {headers: {Authorization: `post ${localStorage.getItem("token")}`}}
                )
+               .then(()=>{
+                    alert('Data is Updated')
+                    this.setState({
+                         done:true
+                    })
+               })
+               .catch(err=>{
+                    console.log(err);
+                    alert('Something Gone Wrong')
+                    this.setState({
+                         done:true
+                    })
+               })
      }
      render() {
-          const {data,p_t,p_d}=this.state
+          const {data,p_t,p_d,done}=this.state
+          if(done===true){
+               return <Redirect to='/home'/>
+          }
           return (
                <div class="Create">
                  <form>
@@ -77,7 +114,7 @@ export default class Editpost extends Component {
                            id="exampleInputEmail1"
                            onChange={(e)=>{
                               this.setState({
-                                   p_t:e.target.value
+                                   p_d:e.target.value
                               })
                          }}
                          value={p_d}
