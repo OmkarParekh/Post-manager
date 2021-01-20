@@ -1,6 +1,7 @@
 import Axios from "axios";
 import React, { Component } from "react";
 import "./create.css";
+import {Redirect} from 'react-router-dom'
 export default class Editpost extends Component {
   constructor(props) {
     super(props);
@@ -8,6 +9,7 @@ export default class Editpost extends Component {
       data: {},
       p_t: "",
       p_d: "",
+      refresh:false
     };
     this.update = this.update.bind(this);
 
@@ -29,8 +31,8 @@ export default class Editpost extends Component {
   }
   update() {
     const data = {
-      Postname: this.statep_t,
-      Description: this.statep_d,
+      Postname: this.state.p_t,
+      Description: this.state.p_d,
       Date: Date.now(),
     };
     Axios.post(
@@ -38,10 +40,19 @@ export default class Editpost extends Component {
       `https://post-manage.herokuapp.com/update/${this.state.data._id}`,
       data,
       { headers: { Authorization: `post ${localStorage.getItem("token")}` } }
-    );
+    )
+    .then(res=>{
+      alert('Post Updated')
+      this.setState({
+        refresh:true
+      })
+    })
   }
   render() {
-    const { data, p_t, p_d } = this.state;
+    const { data, p_t, p_d ,refresh} = this.state;
+    if(refresh===true){
+      return <Redirect to='/profile' />
+    }
     return (
       <div class="Create">
         <form>
