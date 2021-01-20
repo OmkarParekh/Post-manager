@@ -37,7 +37,8 @@ export default class ComentSection extends Component {
       comment: e.target.value,
     });
   }
-  comm() {
+  comm(e) {
+    e.preventDefault()
     if (this.state.comment === "") {
       window.alert("Please Write Commment");
     } else {
@@ -56,6 +57,9 @@ export default class ComentSection extends Component {
         .then((res) => {
           // alert(res.data);
           this.fetchcomment();
+          this.setState({
+            comment: "",
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -75,10 +79,9 @@ export default class ComentSection extends Component {
     )
       .then((res) => {
         // alert(res.data)
+      
         this.fetchcomment();
-        this.setState({
-          comment: "",
-        });
+        
       })
       .catch((err) => {
         console.log(err);
@@ -87,6 +90,7 @@ export default class ComentSection extends Component {
   render() {
     return (
       <div>
+        <form onSubmit={this.comm}>
         <div class="input-group mb-3">
           <input
             type="text"
@@ -99,12 +103,13 @@ export default class ComentSection extends Component {
             aria-describedby="button-addon2"
           />
           <div class="input-group-append">
-            <button class="btn btn-primary" type="button" id="button-addon2" onClick={this.comm}>
+            <button class="btn btn-primary" type="submit" id="button-addon2" onClick={this.comm}>
               {" "}
               <i class="fas fa-chevron-right"></i>
             </button>
           </div>
         </div>
+        </form>
 
         <ul class="list-group">
           {this.state.data.map((item) => (

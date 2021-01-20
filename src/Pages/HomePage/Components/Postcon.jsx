@@ -10,10 +10,12 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import Comment from "./ComentSection";
 import userIcon from "../../../Components/Navbars/assets/user.svg";
+import {Redirect} from 'react-router-dom'
 export default class Postcon extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      refresh:false,
       data: this.props.data,
       id: this.props.data._id,
       nulike: this.props.data.Likes,
@@ -125,6 +127,9 @@ export default class Postcon extends Component {
         if (res.data === "Unauth") {
           alert("Some thing Went Wrong");
         } else {
+          this.setState({
+            refresh:true
+          })
           alert("Post Delted");
           console.log("Post Deleted");
         }
@@ -134,11 +139,11 @@ export default class Postcon extends Component {
       });
   }
   render() {
-    const { data, like, date } = this.state;
-    // console.log(data._id)
-    // if(refresh===true){
-    //      return <Redirect to='/home' />
-    // }
+    const { data, like, date,refresh } = this.state;
+    console.log(data._id)
+    if(refresh===true){
+         return <Redirect to='/profile' />
+    }
 
     return (
       <div>
