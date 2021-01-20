@@ -12,7 +12,7 @@ export default class Editpost extends Component {
     this.update = this.update.bind(this);
 
     Axios.get(
-      `https://post-manage.herokuapp.com/update/${this.props.match.params.id}`,
+      `https://post-manage.herokuapp.com/update/fetch/${this.props.match.params.id}`,
       {
         headers: {
           Authorization: `post ${localStorage.getItem("token")}`,

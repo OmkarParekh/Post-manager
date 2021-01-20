@@ -93,13 +93,13 @@ export default class ComentSection extends Component {
             class="form-control"
             value={this.state.comment}
             onChange={this.input}
-            onClick={this.comm}
+            
             placeholder="Comment"
             aria-label="Comment"
             aria-describedby="button-addon2"
           />
           <div class="input-group-append">
-            <button class="btn btn-primary" type="button" id="button-addon2">
+            <button class="btn btn-primary" type="button" id="button-addon2" onClick={this.comm}>
               {" "}
               <i class="fas fa-chevron-right"></i>
             </button>
