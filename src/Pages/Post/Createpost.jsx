@@ -124,6 +124,7 @@ export default function Addpost() {
   }
   return (
     <div class="Create">
+      {/* <center> */}
       <form>
         <div class="card border-0" id="addcar">
           <h1 class="text-primary">CREATE YOUR POST HERE</h1>
@@ -167,7 +168,6 @@ export default function Addpost() {
                   </center>
                 </label>
               </div>
-              <div class="input-group-append"></div>
             </div>
             <div class="form-group">
               <label class="text-primary">Post Title</label>
@@ -191,6 +191,7 @@ export default function Addpost() {
           </div>
         </div>
       </form>
+      {/* </center> */}
     </div>
   );
 }

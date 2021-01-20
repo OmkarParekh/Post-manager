@@ -60,70 +60,69 @@ export default class Nav extends Component {
     return (
       <div className="">
         {/* <div class="header"></div> */}
-     {
-       url==='/'?<></>:
-       <nav class="navbar navbar-light bg-white shadow ">
-       {/* <nav class="navbar navbar-light bg-transparent"> */}
-       <div className="container">
-       <Link class="navbar-brand" to="/">
-         Post Manager
-       </Link>
+        {url === "/" ? (
+          <></>
+        ) : (
+          <nav class="navbar navbar-light bg-white shadow ">
+            {/* <nav class="navbar navbar-light bg-transparent"> */}
+            <div className="container">
+              <Link class="navbar-brand" to="/">
+                Post Manager
+              </Link>
 
-       <div class="dropdown mr-1 dropleft">
-        
-           <button
-             type="button"
-             class="btn btn-transparent dropdown-toggle"
-             id="dropdownMenuOffset"
-             data-toggle="dropdown"
-             aria-haspopup="true"
-             aria-expanded="false"
-             data-offset="10,20"
-           >
-             <span class="profile-icon">
-               <img src={userPic} alt="" />
-             </span>
-           </button>
-       
-         
-           <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-             {
-               url==='/home'?
-               <></>: <Link class="dropdown-item" to="/home">
-               Home
-             </Link>
-             }
-             {
-               url==='/Createpost'?
-               <></>: <Link class="dropdown-item" to="/Createpost">
-               Create Post
-             </Link>
-             }
-             {
-               url==='/profile'?
-               <></>: <Link class="dropdown-item" to="/profile">
-               Profile
-             </Link>
-             }
-             
-             
-             <div class="dropdown-divider"></div>
-             <Link
-               class="dropdown-item"
-               to="/"
-               onClick={() => {
-                 localStorage.clear();
-               }}
-             >
-               Log Out
-             </Link>
-           </div>
-           </div>
-         
-       </div>
-     </nav>
-       
-     }
+              <div class="dropdown mr-1">
+                <button
+                  type="button"
+                  class="btn btn-transparent dropdown-toggle"
+                  id="dropdownMenuOffset"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  data-offset="10,20"
+                >
+                  <span class="profile-icon">
+                    <img src={userPic} alt="" />
+                  </span>
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                  {url === "/home" ? (
+                    <></>
+                  ) : (
+                    <Link class="dropdown-item" to="/home">
+                      Home
+                    </Link>
+                  )}
+                  {url === "/Createpost" ? (
+                    <></>
+                  ) : (
+                    <Link class="dropdown-item" to="/Createpost">
+                      Create Post
+                    </Link>
+                  )}
+                  {url === "/profile" ? (
+                    <></>
+                  ) : (
+                    <Link class="dropdown-item" to="/profile">
+                      Profile
+                    </Link>
+                  )}
+
+                  <div class="dropdown-divider"></div>
+                  <Link
+                    class="dropdown-item"
+                    to="/"
+                    onClick={() => {
+                      localStorage.clear();
+                    }}
+                  >
+                    Log Out
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </nav>
+        )}
       </div>
     );
 

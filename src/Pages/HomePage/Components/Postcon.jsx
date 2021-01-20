@@ -203,7 +203,7 @@ export default class Postcon extends Component {
             <h5 class="card-title">{data.Postname}</h5>
             <p class="card-text">{data.Description}</p>
             {/* <br/> */}
-            <div class="d-flex mb-3">
+            <div class="d-flex justify-content-center mb-3">
               <button
                 type="button"
                 class="btn post-btn"

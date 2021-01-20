@@ -1,8 +1,9 @@
 import "./Profile.css";
-import '../../App.css'
+import "../../App.css";
 import React, { Component } from "react";
 import Axios from "axios";
 import Post from "../HomePage/Components/Postcon";
+import Preloader from "../../Components/Preloader/Preloader";
 // import { Link } from "react-router-dom";
 export default class Profile extends Component {
   constructor() {
@@ -28,7 +29,7 @@ export default class Profile extends Component {
       });
     });
   }
- 
+
   render() {
     const { data, profile } = this.state;
     return (
@@ -37,11 +38,11 @@ export default class Profile extends Component {
           <div id="loading"></div>
         ) : (
           <>
-            <div className="d-flex align-items-center flex-wrap">
+            <div className="d-flex justify-content-center align-self-center flex-wrap">
               <div className="profile-picture">
                 <img src={profile.Uphoto} alt="profile" />
               </div>
-              <div className="d-flex flex-column profile-content">
+              <div className="d-flex align-self-center flex-column profile-content">
                 <h5 className="profile-name">{profile.UName}</h5>
                 <p className="profile-name">{profile.email}</p>
                 {/* <Link to="/edit" className="btn btn-edit">
@@ -53,14 +54,16 @@ export default class Profile extends Component {
               <div className="font-weight-bold mb-1">Description:-</div>
               {profile.description}
             </div> */}
+            <hr />
           </>
         )}
 
-        <hr />
         <div className="profile-post">
           <h3>Posts</h3>
           {data.length === 0 ? (
-            <>No Post Available</>
+            <center>
+              <Preloader />
+            </center>
           ) : (
             data.reverse().map((data) => <Post data={data} />)
           )}

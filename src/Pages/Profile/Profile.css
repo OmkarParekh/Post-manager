@@ -7,6 +7,9 @@
 .profile-description {
   margin-top: 2rem;
 }
+.profile-content {
+  margin-top: 1.3rem;
+}
 .btn-edit {
   border: 1px solid #007bff;
 }
@@ -19,4 +22,19 @@
   margin-right: 2.5rem;
   margin-bottom: 1.6rem;
   margin-top: 1.6rem;
+  display: block;
+}
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 420px) {
+  .profile-name {
+    text-align: center;
+  }
+  .profile-picture img {
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 380px) {
+  .profile-picture img {
+    margin-right: 0rem;
+  }
 }

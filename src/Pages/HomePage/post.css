@@ -66,6 +66,12 @@
 .comment-form .input-group {
   margin: 10px 0;
 }
+.input-group .input-group-append {
+  width: 60px;
+}
+.input-group-append .btn.btn-primary {
+  width: 60px;
+}
 .icon-custom {
   margin-left: 100%;
 }
@@ -75,6 +81,16 @@
 }
 .shadow {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+}
+.popup-content {
+  padding: 12px;
+  border-radius: 4px;
+}
+.list-group-item + .list-group-item {
+  border-top-width: 1px;
+}
+div.profile-post div div h6 div.dropdown.dropleft div a:hover {
+  text-decoration: none;
 }
 /* .liked {
   position: relative;
@@ -90,12 +106,61 @@
   box-shadow: 0 0 2rem #000;
   z-index: 15;
 } */
+
+/* Extra small devices (portrait phones, less than 576px) */
 @media (min-width: 360px) and (max-width: 575px) {
   .postcard {
-    width: 100%;
+    width: 100% !important;
   }
   .popup-content {
     width: 90% !important;
+    padding: 12px !important;
+  }
+  .post-btn .like {
+    width: 1.2rem;
+  }
+  .post-btn img {
+    width: 1rem;
+    margin-right: 0.5rem;
+  }
+  .d-flex .btn.post-btn {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .post-btn {
+    width: auto;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .postcard {
+    width: 100% !important;
+  }
+  .popup-content {
+    width: 90% !important;
+    padding: 12px !important;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .postcard {
+    width: 90% !important;
+  }
+  .popup-content {
+    width: 80% !important;
+    padding: 12px !important;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .postcard {
+    width: 90% !important;
+  }
+  .popup-content {
+    width: 80% !important;
     padding: 12px !important;
   }
 }

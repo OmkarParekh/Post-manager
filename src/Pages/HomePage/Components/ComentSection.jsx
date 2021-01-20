@@ -15,12 +15,12 @@ export default class ComentSection extends Component {
   fetchcomment() {
     Axios.get(
       // `http://localhost:7000/lc/getcomments/${this.props.id}`
-      `https://post-manage.herokuapp.com/lc/getcomments/${this.props.id}`
-      ,{
+      `https://post-manage.herokuapp.com/lc/getcomments/${this.props.id}`,
+      {
         headers: {
-        'Authorization': `post ${localStorage.getItem('token')}`
-   }
-   }
+          Authorization: `post ${localStorage.getItem("token")}`,
+        },
+      }
     )
       .then((res) => {
         console.log(res);
@@ -43,14 +43,15 @@ export default class ComentSection extends Component {
     } else {
       Axios.post(
         // `http://localhost:7000/lc/comments/${this.props.id}/${this.state.comment}`
-        `https://post-manage.herokuapp.com/lc/comments/${this.props.id}`
-        ,{
-          Comment:this.state.comment
-        },{
+        `https://post-manage.herokuapp.com/lc/comments/${this.props.id}`,
+        {
+          Comment: this.state.comment,
+        },
+        {
           headers: {
-          'Authorization': `post ${localStorage.getItem('token')}`
-     }
-     }
+            Authorization: `post ${localStorage.getItem("token")}`,
+          },
+        }
       )
         .then((res) => {
           // alert(res.data);
@@ -64,19 +65,20 @@ export default class ComentSection extends Component {
   delete(id) {
     Axios.post(
       // `http://localhost:7000/lc/deletecomments/${this.props.id}/${id}`
-      `https://post-manage.herokuapp.com/lc/deletecomments/${this.props.id}/${id}`
-      ,{},{
+      `https://post-manage.herokuapp.com/lc/deletecomments/${this.props.id}/${id}`,
+      {},
+      {
         headers: {
-        'Authorization': `post ${localStorage.getItem('token')}`
-   }
-   }
+          Authorization: `post ${localStorage.getItem("token")}`,
+        },
+      }
     )
       .then((res) => {
         // alert(res.data)
         this.fetchcomment();
         this.setState({
-          comment:""
-        })
+          comment: "",
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -85,23 +87,25 @@ export default class ComentSection extends Component {
   render() {
     return (
       <div>
-        <div class="">
-          <div className="">
-            <input
+        <div class="input-group mb-3">
+          <input
             type="text"
-            class="form-control col-10"
-            id="exampleInputPassword1"
-            placeholder="Comment"
+            class="form-control"
             value={this.state.comment}
             onChange={this.input}
+            onClick={this.comm}
+            placeholder="Comment"
+            aria-label="Comment"
+            aria-describedby="button-addon2"
           />
-        <button type="button" className="btn btn-primary col-1" onClick={this.comm}>
-        <i class="fas fa-chevron-right"></i>
-        </button>
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="button-addon2">
+              {" "}
+              <i class="fas fa-chevron-right"></i>
+            </button>
           </div>
-          
         </div>
-      
+
         <ul class="list-group">
           {this.state.data.map((item) => (
             <li class="list-group-item mt-3">
@@ -114,19 +118,20 @@ export default class ComentSection extends Component {
                   }}
                 ></i>
               ) : (
-                <>{
-                  window.location.pathname==='/profile'?
-              <>
-               <i
-                  class="fas fa-times icon-custom"
-                  onClick={() => {
-                    this.delete(item._id);
-                  }}
-                ></i>
-              </>
-              :
-              <></>
-              }</>
+                <>
+                  {window.location.pathname === "/profile" ? (
+                    <>
+                      <i
+                        class="fas fa-times icon-custom"
+                        onClick={() => {
+                          this.delete(item._id);
+                        }}
+                      ></i>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                </>
               )}
             </li>
           ))}

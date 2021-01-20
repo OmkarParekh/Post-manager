@@ -72,15 +72,3 @@ body {
 .dropleft .dropdown-toggle::before {
   display: none;
 }
-@media (min-width: 360px) and (max-width: 575.98px) {
-  .post-btn .like {
-    width: 1.2rem;
-  }
-  .post-btn img {
-    width: 1rem;
-    margin-right: 0.5rem;
-  }
-  .d-flex .btn {
-    margin-right: 1rem;
-  }
-}

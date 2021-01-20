@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Post from "./Components/Postcon";
 import "./post.css";
 import Axios from "axios";
+import Preloader from "../../Components/Preloader/Preloader";
 // Axios.defaults.headers = {
 // 'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VybmFtZSI6Ik9ta2FyNjAwMSIsIlBhc3N3b3JkIjoiT21rYXJANjAwIiwiaWF0IjoxNTk2NzExOTEyfQ.IX3HTYdvOPFsZY97wNy5RDPMyrUylxO2vUGTHkpMPHM'
 // // 'auth-token':localStorage.getItem('token')
@@ -33,7 +34,9 @@ export default class Home extends Component {
       <div className="container">
         <div class="post">
           {data.length === 0 ? (
-            <>No Post Available</>
+            <center>
+              <Preloader />
+            </center>
           ) : (
             data.reverse().map((data) => <Post data={data} />)
           )}
