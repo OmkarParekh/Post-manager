@@ -1,8 +1,9 @@
 import "./Profile.css";
+import '../../App.css'
 import React, { Component } from "react";
 import Axios from "axios";
 import Post from "../HomePage/Components/Postcon";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 export default class Profile extends Component {
   constructor() {
     super();
@@ -33,7 +34,7 @@ export default class Profile extends Component {
     return (
       <div className="container profile_wrapper">
         {Object.keys(profile).length === 0 ? (
-          <></>
+          <div id="loading"></div>
         ) : (
           <>
             <div className="d-flex align-items-center flex-wrap">
@@ -43,15 +44,15 @@ export default class Profile extends Component {
               <div className="d-flex flex-column profile-content">
                 <h5 className="profile-name">{profile.UName}</h5>
                 <p className="profile-name">{profile.email}</p>
-                <Link to="/edit" className="btn btn-edit">
+                {/* <Link to="/edit" className="btn btn-edit">
                   Edit Profile
-                </Link>
+                </Link> */}
               </div>
             </div>
-            <div className="profile-description">
+            {/* <div className="profile-description">
               <div className="font-weight-bold mb-1">Description:-</div>
               {profile.description}
-            </div>
+            </div> */}
           </>
         )}
 

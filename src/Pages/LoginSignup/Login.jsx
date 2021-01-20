@@ -45,6 +45,7 @@ export default class Login extends Component {
           localStorage.setItem("Name", res.data.Name);
           localStorage.setItem("email", res.data.email);
           localStorage.setItem("Photo", res.data.photo);
+       
           this.setState({
             login: true,
           });
