@@ -139,7 +139,9 @@ export default class Postcon extends Component {
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
                 <div class="dropdown-item">Delete</div>
-                <div class="dropdown-item">Edit Post</div>
+                <Link class="dropdown-item" to={`/edit/${data._id}`}>
+                  Edit Post
+                </Link>
               </div>
             </div>
           </h6>

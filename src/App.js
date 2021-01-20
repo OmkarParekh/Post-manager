@@ -19,7 +19,7 @@ export default class App extends Component {
           <Route path="/profile" exact component={Profile} />
           <Route path="/edit" exact component={EditProfile} />
           <Route path="/Createpost" exact component={Addpost} />
-          <Route path="/Edit/:id" exact component={Editpost} />
+          <Route path="/edit/:id" exact component={Editpost} />
           <Route path="/post/:id" exact component={Singlepost} />
         </Router>
       </div>
