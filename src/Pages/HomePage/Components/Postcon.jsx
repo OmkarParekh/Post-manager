@@ -123,7 +123,7 @@ export default class Postcon extends Component {
       }
     )
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.data === "Unauth") {
           alert("Some thing Went Wrong");
         } else {
@@ -131,7 +131,7 @@ export default class Postcon extends Component {
             refresh: true,
           });
           alert("Post Delted");
-          console.log("Post Deleted");
+          // console.log("Post Deleted");
         }
       })
       .catch((err) => {
@@ -140,7 +140,7 @@ export default class Postcon extends Component {
   }
   render() {
     const { data, like, date, refresh } = this.state;
-    console.log(data._id);
+    // console.log(data._id);
     if (refresh === true) {
       return <Redirect to="/profile" />;
     }

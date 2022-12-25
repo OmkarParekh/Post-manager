@@ -15,7 +15,7 @@ export default class Profile extends Component {
 
     Axios.get(
       // "http://localhost:7000/withprofile",
-      "https://post-manage.herokuapp.com/withprofile",
+      `${window.url}/withprofile`,
       {
         headers: {
           Authorization: `post ${localStorage.getItem("token")}`,

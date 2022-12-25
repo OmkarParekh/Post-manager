@@ -1,7 +1,7 @@
 import Axios from "axios";
 import React, { Component } from "react";
 import "./create.css";
-import {Redirect} from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 export default class Editpost extends Component {
   constructor(props) {
     super(props);
@@ -9,19 +9,16 @@ export default class Editpost extends Component {
       data: {},
       p_t: "",
       p_d: "",
-      refresh:false
+      refresh: false,
     };
     this.update = this.update.bind(this);
 
-    Axios.get(
-      `https://post-manage.herokuapp.com/update/fetch/${this.props.match.params.id}`,
-      {
-        headers: {
-          Authorization: `post ${localStorage.getItem("token")}`,
-        },
-      }
-    ).then((res) => {
-      console.log(res);
+    Axios.get(`${window.url}/update/fetch/${this.props.match.params.id}`, {
+      headers: {
+        Authorization: `post ${localStorage.getItem("token")}`,
+      },
+    }).then((res) => {
+      // console.log(res);
       this.setState({
         data: res.data,
         p_t: res.data.Postname,
@@ -37,21 +34,20 @@ export default class Editpost extends Component {
     };
     Axios.post(
       // `http://localhost:7000/update/${this.state.data._id}`,
-      `https://post-manage.herokuapp.com/update/${this.state.data._id}`,
+      `${window.url}/update/${this.state.data._id}`,
       data,
       { headers: { Authorization: `post ${localStorage.getItem("token")}` } }
-    )
-    .then(res=>{
-      alert('Post Updated')
+    ).then((res) => {
+      alert("Post Updated");
       this.setState({
-        refresh:true
-      })
-    })
+        refresh: true,
+      });
+    });
   }
   render() {
-    const { data, p_t, p_d ,refresh} = this.state;
-    if(refresh===true){
-      return <Redirect to='/profile' />
+    const { data, p_t, p_d, refresh } = this.state;
+    if (refresh === true) {
+      return <Redirect to="/profile" />;
     }
     return (
       <div class="Create">
