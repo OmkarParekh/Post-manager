@@ -16,7 +16,7 @@ export default class Home extends Component {
     };
     Axios.get(
       // "http://localhost:7000/"
-      "https://post-manage.herokuapp.com/",
+      `${window.url}/`,
       {
         headers: {
           Authorization: `post ${localStorage.getItem("token")}`,

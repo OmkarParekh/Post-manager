@@ -8,6 +8,7 @@ import Profile from "./Pages/Profile/Profile";
 import EditProfile from "./Pages/Edit Profile/EditProfile";
 import Editpost from "./Pages/Post/Editpost";
 import Singlepost from "./Pages/Post/Singlepost";
+window.url = "https://post-manager.up.railway.app"
 export default class App extends Component {
   render() {
     return (

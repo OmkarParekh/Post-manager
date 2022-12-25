@@ -6,7 +6,7 @@ export default class EditProfile extends Component {
     this.state = {
       user: "",
       desc: "",
-      email: "official.yashpurohit@gmail.com",
+      email: "omkarparekh600@gmail.com",
     };
   }
   onChangeHandle = (e) => {

@@ -36,7 +36,7 @@ export default class Login extends Component {
         };
         Axios.post(
           // 'http://localhost:7000/oauth'
-          `https://post-manage.herokuapp.com/oauth`,
+          `${window.url}/oauth`,
 
           data
         ).then((res) => {

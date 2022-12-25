@@ -10,12 +10,12 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import Comment from "./ComentSection";
 import userIcon from "../../../Components/Navbars/assets/user.svg";
-import {Redirect} from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 export default class Postcon extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      refresh:false,
+      refresh: false,
       data: this.props.data,
       id: this.props.data._id,
       nulike: this.props.data.Likes,
@@ -57,7 +57,7 @@ export default class Postcon extends Component {
     if (this.state.like === "Like") {
       Axios.post(
         // `http://localhost:7000/lc/like/${this.state.id}`
-        `https://post-manage.herokuapp.com/lc/like/${this.state.id}`,
+        `${window.url}/lc/like/${this.state.id}`,
 
         {},
         {
@@ -85,7 +85,7 @@ export default class Postcon extends Component {
     } else {
       Axios.post(
         // `http://localhost:7000/lc/unlike/${this.state.id}`,
-        `https://post-manage.herokuapp.com/lc/unlike/${this.state.id}`,
+        `${window.url}/lc/unlike/${this.state.id}`,
 
         {},
         {
@@ -113,7 +113,7 @@ export default class Postcon extends Component {
   Delete(id, iid) {
     Axios.post(
       // `http://localhost:7000/delete/${id}/${iid}`,
-      `https://post-manage.herokuapp.com/delete/${id}/${iid}`,
+      `${window.url}/delete/${id}/${iid}`,
 
       {},
       {
@@ -128,8 +128,8 @@ export default class Postcon extends Component {
           alert("Some thing Went Wrong");
         } else {
           this.setState({
-            refresh:true
-          })
+            refresh: true,
+          });
           alert("Post Delted");
           console.log("Post Deleted");
         }
@@ -139,10 +139,10 @@ export default class Postcon extends Component {
       });
   }
   render() {
-    const { data, like, date,refresh } = this.state;
-    console.log(data._id)
-    if(refresh===true){
-         return <Redirect to='/profile' />
+    const { data, like, date, refresh } = this.state;
+    console.log(data._id);
+    if (refresh === true) {
+      return <Redirect to="/profile" />;
     }
 
     return (
