@@ -70,11 +70,7 @@ export default class Login extends Component {
             {/* <div className="g-wrapper"> */}
             <div class="google-btn" onClick={this.gauth}>
               <div class="google-icon-wrapper">
-                <img
-                  class="google-icon"
-                  src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                  alt=""
-                />
+            <img width="40" height="40" src="https://img.icons8.com/color/48/google-logo.png" alt="google-logo"/>
               </div>
               <p class="btn-text">
                 <b>Continue With Google</b>
